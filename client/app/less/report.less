@@ -1,0 +1,140 @@
+/*
+ * Common Report Styles
+ */
+
+.report-container {
+
+    .report-row.category-row td {
+        background-color: #e6f0f7;
+    }
+
+    .report-row {
+        td {
+            text-align: right;
+        }
+        .text {
+            text-align: left;
+        }
+    }
+
+    th {
+        text-align: center;
+        border-bottom: none !important;
+        background-color: @tableHeaderBgColor;
+        color: @tableHeaderColor;
+    }
+
+    th, td {
+        padding: 8px !important;
+    }
+}
+
+/*
+ * Monthly Report
+ */
+
+.monthly-report-container {
+
+    .trx-filter {
+        .form-group {
+            white-space: nowrap;
+            margin: 0px;
+        }
+
+        .form-control {
+            display: inline-block;
+            width: auto;
+        }
+    }
+
+    .show-subcategory-checkbox {
+        margin-right: 40px;
+    }
+
+    th.text {
+         color: #000000;
+    }
+
+    td.subcategory-cell {
+        border-left: none !important;
+    }
+
+    td.empty-category-cell {
+        border-right: none !important;
+    }
+
+    .report-row.category-row {
+        .year-total {
+            font-weight: bold;
+        }
+        td, th {
+            background-color: #f5f5f5;
+            background-color: #e6f0f7;
+        }
+    }
+
+    .report-totals td {
+        font-weight: bold;
+    }
+
+    .monthly-report {
+        table-layout: fixed;
+    }
+
+    .category {
+        min-width: 10.0rem;
+        width: 100px;
+    }
+
+    .subcategory {
+        min-width: 15.0rem;
+        width: 15.0rem;
+    }
+
+    .table-controls {
+        margin-bottom: 5px;
+    }
+
+    .hidden-cell {
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+/*
+ * Yearly Report
+ */
+
+.yearly-report-container {
+
+    th.category {
+        width: 15.0rem;
+    }
+
+    td.subcategory-cell {
+        border-left: none !important;
+     }
+
+    td.empty-category-cell {
+        border-right: none !important;
+    }
+
+    tr.report-totals td {
+        font-weight: bold;
+    }
+
+    .report-row.category-row td {
+        background-color: #e6f0f7;
+    }
+}
+
+/*
+ * Summary Report
+ */
+
+.summary-report-container {
+    max-width: 500px;
+}
+

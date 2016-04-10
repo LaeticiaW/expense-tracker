@@ -1,0 +1,108 @@
+/*
+ * Header
+ */
+
+.header-navbar {
+
+    background-color: #286090 !important;
+    color: #ffffff !important;
+
+    .header-container {
+        border-bottom: #cdcdcd;
+
+        .header-title {
+            color: #ffffff !important;
+            font-size: 2.4rem !important;
+            margin-bottom: 10px !important;
+            margin-top: 10px !important;
+        }
+
+        .navbar-header {
+            .header-title {
+                margin-left: 15px;
+            }
+            .collapsed-navbar-title {
+                display: inline-block;
+
+            }
+            button.navbar-toggle {
+                background-color: #ffffff !important;
+            }
+        }
+
+        .navbar-controls {
+
+            .first-nav-item a {
+                padding-left: 0px !important;
+            }
+
+            ul.menu.nav > li > a {
+                color: #ffffff !important;
+                padding-top: 5px !important;
+                padding-bottom: 5px !important;
+            }
+
+            ul.menu.nav > li.open > a {
+                color: #000000 !important;
+                padding-top: 5px !important;
+                padding-bottom: 5px !important;
+            }
+
+            ul.submenu li a {
+                color: #000000 !important;
+            }
+
+            li.dropdown.open > a {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+    .header-navbar {
+
+        .header-container {
+
+            .navbar-header {
+                button.navbar-toggle {
+                    background-color: #ffffff !important;
+                    button.navbar-toggle span.icon-bar {
+                        color: #000000 !important;
+                        background-color: #000000 !important;
+                    }
+                }
+            }
+
+            .navbar-controls {
+                a:hover, a:active, a:focus {
+                    outline: 5px solid #4d90fe;
+                    outline-style: auto;
+                    outline-offset: -2px;
+                }
+                .first-nav-item a {
+                    padding-left: 15px !important;
+                }
+
+                ul.menu.nav > li.open > a {
+                    color: #ffffff !important;
+                    padding-top: 5px !important;
+                    padding-bottom: 5px !important;
+                }
+
+                ul.submenu li a {
+                    color: #ffffff !important;
+                }
+
+                li.dropdown.open > a {
+                    background-color: #286090 !important;
+                    color: #ffffff !important;
+                }
+            }
+        }
+    }
+}

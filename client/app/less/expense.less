@@ -1,0 +1,76 @@
+/*
+ * Expenses
+ */
+
+ .expense-container {
+
+    min-width: 600px !important;
+
+    .expense-data {
+        th, td {
+            width: 20%;
+        }
+
+        .row-commands {
+            width: 11.0rem;
+        }
+    }
+
+    .add-wrapper.form-group {
+        margin: 0px 0px 0px 15px;
+        display: inline-block;
+    }
+ }
+
+@media screen and (max-width: 500px) {
+    .add-wrapper.form-group {
+        padding-top: 0px;
+    }
+    .add-wrapper .add-button .text {
+        display: none;
+    }
+    .add-wrapper .add-button .icon {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 1;
+
+    }
+}
+@media screen and (min-width: 500px) {
+    .add-wrapper.form-group {
+        padding-top: 6px;
+    }
+    .add-wrapper .add-button .text {
+        display: inline;
+    }
+    .add-wrapper .add-button .icon {
+        display: none;
+    }
+}
+
+ /* View Mode */
+
+.expense-view.view-controls, .expense-view.trx-date {
+    white-space: nowrap;
+ }
+
+ .expense-row td.expense-edit {
+    min-width: 10.0rem;
+ }
+
+ /* Edit Mode */
+
+ .expense-container .expense-edit {
+    background-color: #efefef;
+ }
+
+ .expense-edit-form {
+    padding: 0px 0px 20px 0px;
+    min-height: 3.8rem;
+ }
+
+ .expense-edit.edit-controls {
+    white-space: nowrap;
+ }
+

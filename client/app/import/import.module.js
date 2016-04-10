@@ -1,0 +1,1 @@
+angular.module('import', ['ui.grid', 'ui.grid.selection', 'ui.grid.edit']);

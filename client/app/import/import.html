@@ -1,0 +1,24 @@
+<div class="container content-container import-container">
+
+    <div class="page-header">         
+        <h2 class="page-title">Import Spending</h2>
+        <div class="page-links">
+            <input class="import-input" type="file" file-model="csvFile" />
+            <button class="btn btn-sm btn-default select-file" type="button" ng-click="selectFile()">Choose File</button>
+            <input class="upload-file-name" value="{{csvFile.name}}" readonly>  
+            <button class="btn btn-sm btn-primary go-button" type="button" ng-click="uploadFile()">Go</button>                                                   
+        </div>             
+    </div>
+
+    <div ng-if="dataUploaded" class="import-grid-button-wrapper">        
+        <button class="btn btn-sm btn-default delete-button" type="button" ng-click="deleteSelected()">Delete Selected</button>
+        <button class="btn btn-sm btn-default clear-button" type="button" ng-click="clearSelected()">Clear Selected</button>
+        <button class="btn btn-sm btn-primary import-button" type="button" ng-click="importData()">Import Data</button>
+    </div>
+    <div style="clear: both"/>
+
+    <div class="">        
+        <div  class="import-grid" ng-if="dataUploaded" ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>        
+    </div>
+
+</div>

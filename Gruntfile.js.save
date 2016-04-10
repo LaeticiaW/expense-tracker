@@ -1,0 +1,165 @@
+module.exports = function (grunt) {
+
+    grunt.initConfig({
+
+        // Automatically run a task when a file changes
+        watch: {
+            styles: {
+                files: ["src/css/*"],
+                tasks: "less:development",
+                options: {
+                   livereload: true // port 35729
+                },
+            },
+            js: {
+                files: ['<%= jshint.files %>'],
+                tasks: ['jshint']
+            }
+        },
+
+        less: {
+            development: {
+                options: {
+                    paths: ["src/css/*"]
+                },
+                files: {
+                    "cp/css/bootstrap-3.0.0/bootstrap.css": "src/css/bootstrap-3.0.0/bootstrap.css",
+                    "cp/css/global.css": "src/css/index.less"
+                }
+              },
+              production: {
+                options: {
+                    paths: ["src/css/*"],
+                    yuicompress: true
+                },
+                files: {
+                    "cp/css/bootstrap-3.0.0/bootstrap.min.css": "src/css/bootstrap-3.0.0/bootstrap.min.css",
+                    "cp/css/global.css": "src/css/index.less"
+                }
+              }
+        },
+
+        copy: {
+          build: {
+            cwd: 'cp',
+            src: [ '**' ],
+            dest: 'build/cp',
+            expand: true
+          },
+          requirelib: {
+            cwd: 'cp/js/lib/',
+            src: [ 'require.js' ],
+            dest: 'build/cp/js/lib/',
+            expand: true
+          },
+        },
+
+        clean: {
+          js: ["build/cp/js/"],
+          build: ["build"],
+        },
+
+        requirejs: {
+            compile: {
+                options: {
+                    mainConfigFile: 'cp/js/main.js',
+                    baseUrl: "cp/js",
+                    name: "main",
+                    out: 'build/cp/js/main.js'
+                }
+            }
+        },
+
+        compress: {
+            main: {
+                options: {
+                    archive: 'cp-front-end.zip'
+                },
+                files: [
+                    {src: ['build/cp/**'], dest: '/'}
+                ]
+            }
+        },
+
+        connect: {
+            run : {
+                port : 8000
+            }
+        },
+
+        jasmine: {
+            run: {
+                src: '../../cp/js/app/**/**',
+                options: {
+                    host: 'http://127.0.0.1:8000',
+                    baseUrl: '../../cp/js/app',
+                    specs: 'src/test/javascript/**/*Spec.js',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfigFile: 'src/test/javascript/require-config.js'
+                    }
+                }
+            }
+        },
+
+        jshint: {
+            files: ['cp/js/app/**/*.js'],
+            options: {
+                jshintrc: 'jshintrc'
+            },
+        },
+
+        shell: {
+            verify: {
+                command: "mvn verify"
+            }
+        },
+
+        jscs: {
+                src: "cp/js/app/**/*.js",
+                options: {
+                   //reporter: 'checkstyle',
+                   requireSpaceAfterKeywords: [ "if", "else", "for", "while", "do", "switch", "return", "try" ],
+                   requireSpacesInFunctionExpression: {beforeOpeningCurlyBrace: true},
+                   requireSpacesInAnonymousFunctionExpression: {beforeOpeningCurlyBrace: true},
+                   disallowSpacesInsideParentheses: true,
+                   requireSpaceBeforeBinaryOperators: ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
+                   requireSpaceAfterBinaryOperators: ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="]
+                   // not released yet: requireSpaceBeforeBlockStatements: true
+                }
+        }
+
+    });
+
+    // Load tasks so we can use them
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks( "grunt-jscs-checker" );
+
+    // The default task will show the usage
+    grunt.registerTask("default", "Prints usage", function () {
+        grunt.log.writeln("");
+        grunt.log.writeln("K12 - CP30 front-end development");
+        grunt.log.writeln("--------------------------------");
+        grunt.log.writeln("");
+        grunt.log.writeln("* run 'grunt --help' to get an overview of all commands.");
+        grunt.log.writeln("* run 'grunt dev' to build while developing.");
+    });
+
+    // Run this task to run jasmine tests
+    grunt.registerTask("test", ["jshint", "jscs", "connect:run", "jasmine:run"]);
+    // Run this task for dev environments
+    grunt.registerTask("dev", ["less:development", "watch:styles"]);
+    // Run this task for prod environments
+    grunt.registerTask("prod", ["less:production", "copy:build", "clean:js", "copy:requirelib", "requirejs:compile", "compress", "clean:build"]);
+    // Run this task for test coverage
+    grunt.registerTask("verify", ["shell:verify"]);
+};

@@ -1,0 +1,79 @@
+<div class="container content-container category-container">
+
+    <div class="row page-header">
+        <h2 class="page-title">Categories</h3>
+        <div class="page-links">
+            <span class="form-group add-wrapper">
+                <button type="button" class="btn btn-sm btn-primary glyphicon glyphicon-plus" ng-click="addCategory()"></button>
+            </span>
+        </div>
+    </div>
+
+    <form name="categoryForm" novalidate>
+
+        <table class="table table-bordered table-hover table-condensed table-responsive table-striped basic-table category-data">
+            <thead>
+                <tr>
+                    <th>
+                        <a tabindex="0" ng-click="sortCategories('name')" role="button">Category</a>
+                        <span class="sort-button-wrapper">
+                            <button ng-if="sort.property === 'name' && sort.direction === 'ascending'" class="glyphicon glyphicon-triangle-top sort-button" ng-click="sortCategories('category')"/>
+                            <button ng-if="sort.property === 'name' && sort.direction === 'descending'" class="glyphicon glyphicon-triangle-bottom sort-button" ng-click="sortCategories('category')"/>
+                        </span>
+                    </th>
+                    <th>
+                        <span>Subcategories</span>
+                    </th>
+                    <th class="row-commands"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="category-row" ng-repeat="cat in categories" ng-switch on="cat.mode">
+                    <!-- View mode -->
+                    <td class="category-view" ng-switch-default>
+                        {{cat.name}}
+                    </td>
+                    <td class="category-view" ng-switch-default>
+                        <div ng-repeat="subcat in cat.subcategories">{{subcat.name}}</div>
+                    </td>
+                    <td class="category-view view-controls row-commands" ng-switch-default>
+                        <button type="button" class="btn btn-sm btn-primary btn-table glyphicon glyphicon-pencil" ng-click="editCategory(cat)"></button>
+                        <button type="button" class="btn btn-sm btn-default btn-table glyphicon glyphicon-remove"
+                                mwl-confirm title="Delete Confirmation" message="Are you sure you want to delete the category?" on-confirm="deleteCategory(cat)"></button>
+                    </td>
+
+                    <!-- Edit mode -->
+                    <td class="category-edit" ng-switch-when="edit">
+                        <input type="text" name="categoryName" class="form-control text"  maxlength="300" ng-model="cat.name" required
+                            focus="focusCategoryInput" category-name-validator state="{{cat.state}}" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 400, 'blur': 0} }">
+                        <p ng-show="categoryForm.categoryName.$invalid && categoryForm.categoryName.$touched" class="error-msg">
+                            A unique category name is required
+                        </p>
+                    </td>
+                    <td class="category-edit" ng-switch-when="edit">
+
+                        <button type="button" class="btn btn-sm btn-primary subcategory-add-button glyphicon glyphicon-plus" ng-click="addSubcategory(cat)"></button>
+
+                        <div class="subcategories">
+                            <div class="subcategory-wrapper" ng-repeat="subcategory in cat.subcategories">
+                                <div class="input-field" style="white-space: nowrap;">
+                                    <input type="text" name="{{'subcategoryName' + $index}}" class="form-control text" maxlength="300" ng-model="subcategory.name" required focus="focusSubcategoryInput"/>
+                                    <button type="button" class="btn btn-sm btn-default btn-table glyphicon glyphicon-remove" ng-click="deleteSubcategory(cat, subcategory)"></button>
+                                </div>
+                            </div>
+                            <p ng-show="categoryForm['subcategoryName' + $index].$invalid && categoryForm['subcategoryName' + $index].$touched" class="error-msg">
+                                A subcategory name is required
+                            </p>
+                        </div>
+                    </td>
+                    <td class="category-edit edit-controls row-commands" ng-switch-when="edit">
+                        <button class="btn btn-default btn-sm btn-primary" type="button" ng-disabled="categoryForm.$invalid || categoryForm.$pending" ng-click="saveCategory(cat)">Save</button>
+                        <button class="btn btn-default btn-sm" type="button" ng-click="cancelCategory(cat)">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+
+</div>

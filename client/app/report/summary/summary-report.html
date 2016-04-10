@@ -1,0 +1,23 @@
+<div class="container content-container report-container summary-report-container">
+
+    <div class="row page-header">         
+        <h2 class="page-title">Expense Summary</h3>        
+    </div>           
+
+    <table class="table table-bordered table-hover table-condensed table-responsive table-striped summary-report-data">
+        <caption class="sr-only">Total expenses by year</caption>
+        <thead>
+            <tr>                  
+                <th><span>Year</span></th> 
+                <th><span>Expenses</span></th>                                                                                 
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in reportRows">
+                <td class="text">{{data._id.year}}</td>
+                <td class="amount">{{data.total | number:2}}</td>
+            </tr>            
+        </tbody>
+    </table>
+
+</div>

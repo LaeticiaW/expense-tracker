@@ -1,0 +1,85 @@
+/*
+ * Category Mappings
+ */
+
+.category-mapping-container {
+
+    .category-mapping-data {
+        th, td {
+            width: 25%;
+        }
+        .row-commands {
+            width: 7.5rem;
+        }
+
+    }
+
+    .add-wrapper {
+        form-group {
+            margin: 0px 0px 0px 15px;
+            display: inline-block;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .add-wrapper {
+            .form-group {
+                padding-top: 0px;
+            }
+            .add-button {
+                .text {
+                    display: none;
+                }
+                .icon {
+                    display: inline-block;
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 500px) {
+        .add-wrapper {
+            .form-group {
+                padding-top: 6px;
+            }
+           .add-button {
+                .text {
+                   display: inline;
+                }
+                icon {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    /* View Mode */
+
+    .mapping-view.view-controls {
+        white-space: nowrap;
+    }
+
+    .mapping-row td.mapping-edit {
+       min-width: 10.0rem;
+    }
+
+    /* Edit Mode */
+
+    .mapping-container .mapping-edit {
+       background-color: #efefef;
+    }
+
+    .mapping-edit-form {
+       padding: 0px 0px 20px 0px;
+       min-height: 3.8rem;
+    }
+
+    .mapping-edit.edit-controls {
+       white-space: nowrap;
+    }
+
+}
+

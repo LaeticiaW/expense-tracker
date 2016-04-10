@@ -1,0 +1,501 @@
+/*
+ * Common styles for expense tracker
+ */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.4rem;
+}
+.btn.btn-table {
+  padding: 2px 7px !important;
+}
+.input-field {
+  display: inline-block;
+}
+.amount {
+  text-align: right;
+}
+input.text,
+input.form-control.text {
+  width: 10.0rem !important;
+}
+.sort-button-wrapper {
+  display: inline-block;
+  width: 1.6rem;
+}
+.sort-button {
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+.row.wide-row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+@media only screen and (max-width: 768px) {
+  body {
+    padding-top: 7.0rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  body {
+    padding-top: 11.0rem;
+  }
+}
+/*
+ * Basic Table
+ */
+.basic-table {
+  table-layout: fixed;
+}
+.basic-table th {
+  font-weight: normal;
+  border-bottom: none !important;
+  background-color: #286090;
+  color: #ffffff;
+}
+.basic-table th a {
+  color: #000000;
+  color: #ffffff;
+}
+.basic-table th,
+.basic-table td {
+  width: 25%;
+}
+.basic-table th.row-commands,
+.basic-table td.row-commands {
+  width: 7.5rem;
+}
+.basic-table input.text,
+.basic-table input.form-control.text {
+  width: 80% !important;
+}
+/*
+ * Page Header
+ */
+.page-header {
+  padding: 10px;
+  margin: 0px 0px 20px 0px;
+  background-color: #d9ebf7;
+  border: solid 1px #c3e2f7;
+}
+.page-header .page-title {
+  font-weight: bold;
+  padding: 0px;
+  padding-top: 5px;
+  margin: 0px;
+  display: inline-block;
+  line-height: 1.42857143;
+  font-size: 2.0rem;
+}
+.page-header .page-links {
+  float: right;
+}
+.page-header .page-links .form-group.filter {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0px;
+}
+.page-header .page-links .form-group.filter .form-control {
+  display: inline-block;
+  width: auto;
+}
+/*
+ * Bootstrap Overrides
+ */
+.dropdown-menu {
+  font-size: 1.4rem !important;
+}
+.btn-sm {
+  font-size: 1.2rem !important;
+}
+.form-control {
+  font-size: 1.4rem !important;
+}
+/* UI Bootstrap Date Picker */
+table.uib-daypicker th,
+table.uib-daypicker td {
+  width: auto;
+}
+table.uib-daypicker td.uib-day {
+  border: none !important;
+}
+table.uib-daypicker td.uib-day button {
+  border: none !important;
+}
+.uib-datepicker-popup {
+  width: 24.0rem;
+}
+/* Error styling */
+.error-msg {
+  font-size: 1.2rem;
+  color: red;
+}
+form input,
+form select {
+  border-color: blue;
+}
+form input.ng-invalid.ng-touched,
+form select.ng-invalid.ng-touched {
+  border-color: red;
+}
+form input.ng-valid.ng-touched,
+form select.ng-valid.ng-touched {
+  border-color: green;
+}
+/*
+ * Header
+ */
+.header-navbar {
+  background-color: #286090 !important;
+  color: #ffffff !important;
+}
+.header-navbar .header-container {
+  border-bottom: #cdcdcd;
+}
+.header-navbar .header-container .header-title {
+  color: #ffffff !important;
+  font-size: 2.4rem !important;
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+}
+.header-navbar .header-container .navbar-header .header-title {
+  margin-left: 15px;
+}
+.header-navbar .header-container .navbar-header .collapsed-navbar-title {
+  display: inline-block;
+}
+.header-navbar .header-container .navbar-header button.navbar-toggle {
+  background-color: #ffffff !important;
+}
+.header-navbar .header-container .navbar-controls .first-nav-item a {
+  padding-left: 0px !important;
+}
+.header-navbar .header-container .navbar-controls ul.menu.nav > li > a {
+  color: #ffffff !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.header-navbar .header-container .navbar-controls ul.menu.nav > li.open > a {
+  color: #000000 !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.header-navbar .header-container .navbar-controls ul.submenu li a {
+  color: #000000 !important;
+}
+.header-navbar .header-container .navbar-controls li.dropdown.open > a {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+@media only screen and (max-width: 767px) {
+  .header-navbar .header-container .navbar-header button.navbar-toggle {
+    background-color: #ffffff !important;
+  }
+  .header-navbar .header-container .navbar-header button.navbar-toggle button.navbar-toggle span.icon-bar {
+    color: #000000 !important;
+    background-color: #000000 !important;
+  }
+  .header-navbar .header-container .navbar-controls a:hover,
+  .header-navbar .header-container .navbar-controls a:active,
+  .header-navbar .header-container .navbar-controls a:focus {
+    outline: 5px solid #4d90fe;
+    outline-style: auto;
+    outline-offset: -2px;
+  }
+  .header-navbar .header-container .navbar-controls .first-nav-item a {
+    padding-left: 15px !important;
+  }
+  .header-navbar .header-container .navbar-controls ul.menu.nav > li.open > a {
+    color: #ffffff !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+  .header-navbar .header-container .navbar-controls ul.submenu li a {
+    color: #ffffff !important;
+  }
+  .header-navbar .header-container .navbar-controls li.dropdown.open > a {
+    background-color: #286090 !important;
+    color: #ffffff !important;
+  }
+}
+/*
+ * Categories
+ */
+.category-container {
+  max-width: 700px;
+  /* Edit Mode */
+}
+.category-container .page-links {
+  text-align: right;
+}
+.category-container .category-data th,
+.category-container .category-data td {
+  width: 40%;
+}
+.category-container .category-data .row-commands {
+  width: 20%;
+}
+.category-container .category-data .subcategory-add-button {
+  float: right;
+}
+.category-container .category-edit .form-row {
+  padding: 0px 0px 20px 0px;
+}
+.category-container .category-edit .subcategory-add-link {
+  float: none;
+}
+.category-container .category-edit input {
+  display: inline-block !important;
+  margin-bottom: 10px;
+}
+.category-container .category-edit buttons {
+  width: 15.0rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.category-container .category-edit .input-field .category {
+  display: block;
+}
+/*
+ * Category Mappings
+ */
+.category-mapping-container {
+  /* View Mode */
+  /* Edit Mode */
+}
+.category-mapping-container .category-mapping-data th,
+.category-mapping-container .category-mapping-data td {
+  width: 25%;
+}
+.category-mapping-container .category-mapping-data .row-commands {
+  width: 7.5rem;
+}
+.category-mapping-container .add-wrapper form-group {
+  margin: 0px 0px 0px 15px;
+  display: inline-block;
+}
+@media screen and (max-width: 500px) {
+  .category-mapping-container .add-wrapper .form-group {
+    padding-top: 0px;
+  }
+  .category-mapping-container .add-wrapper .add-button .text {
+    display: none;
+  }
+  .category-mapping-container .add-wrapper .add-button .icon {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+  }
+}
+@media screen and (min-width: 500px) {
+  .category-mapping-container .add-wrapper .form-group {
+    padding-top: 6px;
+  }
+  .category-mapping-container .add-wrapper .add-button .text {
+    display: inline;
+  }
+  .category-mapping-container .add-wrapper .add-button icon {
+    display: none;
+  }
+}
+.category-mapping-container .mapping-view.view-controls {
+  white-space: nowrap;
+}
+.category-mapping-container .mapping-row td.mapping-edit {
+  min-width: 10.0rem;
+}
+.category-mapping-container .mapping-container .mapping-edit {
+  background-color: #efefef;
+}
+.category-mapping-container .mapping-edit-form {
+  padding: 0px 0px 20px 0px;
+  min-height: 3.8rem;
+}
+.category-mapping-container .mapping-edit.edit-controls {
+  white-space: nowrap;
+}
+/*
+ * Expenses
+ */
+.expense-container {
+  min-width: 600px !important;
+}
+.expense-container .expense-data th,
+.expense-container .expense-data td {
+  width: 20%;
+}
+.expense-container .expense-data .row-commands {
+  width: 11.0rem;
+}
+.expense-container .add-wrapper.form-group {
+  margin: 0px 0px 0px 15px;
+  display: inline-block;
+}
+@media screen and (max-width: 500px) {
+  .add-wrapper.form-group {
+    padding-top: 0px;
+  }
+  .add-wrapper .add-button .text {
+    display: none;
+  }
+  .add-wrapper .add-button .icon {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+}
+@media screen and (min-width: 500px) {
+  .add-wrapper.form-group {
+    padding-top: 6px;
+  }
+  .add-wrapper .add-button .text {
+    display: inline;
+  }
+  .add-wrapper .add-button .icon {
+    display: none;
+  }
+}
+/* View Mode */
+.expense-view.view-controls,
+.expense-view.trx-date {
+  white-space: nowrap;
+}
+.expense-row td.expense-edit {
+  min-width: 10.0rem;
+}
+/* Edit Mode */
+.expense-container .expense-edit {
+  background-color: #efefef;
+}
+.expense-edit-form {
+  padding: 0px 0px 20px 0px;
+  min-height: 3.8rem;
+}
+.expense-edit.edit-controls {
+  white-space: nowrap;
+}
+/*
+ * Import
+ */
+.import-container .import-input {
+  display: none !important;
+}
+.import-container .upload-file-name {
+  border: solid 1px #cccccc;
+  width: 15.0rem;
+  padding-left: 5px;
+}
+.import-container .import-grid-button-wrapper {
+  margin-bottom: 5px;
+}
+.import-container .import-button {
+  float: right;
+}
+.import-container .ui-grid-scrollbar-placeholder {
+  border: solid 1px #e7e7e7;
+  border-left: none;
+}
+/*
+ * Common Report Styles
+ */
+.report-container .report-row.category-row td {
+  background-color: #e6f0f7;
+}
+.report-container .report-row td {
+  text-align: right;
+}
+.report-container .report-row .text {
+  text-align: left;
+}
+.report-container th {
+  text-align: center;
+  border-bottom: none !important;
+  background-color: #286090;
+  color: #ffffff;
+}
+.report-container th,
+.report-container td {
+  padding: 8px !important;
+}
+/*
+ * Monthly Report
+ */
+.monthly-report-container .trx-filter .form-group {
+  white-space: nowrap;
+  margin: 0px;
+}
+.monthly-report-container .trx-filter .form-control {
+  display: inline-block;
+  width: auto;
+}
+.monthly-report-container .show-subcategory-checkbox {
+  margin-right: 40px;
+}
+.monthly-report-container th.text {
+  color: #000000;
+}
+.monthly-report-container td.subcategory-cell {
+  border-left: none !important;
+}
+.monthly-report-container td.empty-category-cell {
+  border-right: none !important;
+}
+.monthly-report-container .report-row.category-row .year-total {
+  font-weight: bold;
+}
+.monthly-report-container .report-row.category-row td,
+.monthly-report-container .report-row.category-row th {
+  background-color: #f5f5f5;
+  background-color: #e6f0f7;
+}
+.monthly-report-container .report-totals td {
+  font-weight: bold;
+}
+.monthly-report-container .monthly-report {
+  table-layout: fixed;
+}
+.monthly-report-container .category {
+  min-width: 10.0rem;
+  width: 100px;
+}
+.monthly-report-container .subcategory {
+  min-width: 15.0rem;
+  width: 15.0rem;
+}
+.monthly-report-container .table-controls {
+  margin-bottom: 5px;
+}
+.monthly-report-container .hidden-cell {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: collapse;
+}
+/*
+ * Yearly Report
+ */
+.yearly-report-container th.category {
+  width: 15.0rem;
+}
+.yearly-report-container td.subcategory-cell {
+  border-left: none !important;
+}
+.yearly-report-container td.empty-category-cell {
+  border-right: none !important;
+}
+.yearly-report-container tr.report-totals td {
+  font-weight: bold;
+}
+.yearly-report-container .report-row.category-row td {
+  background-color: #e6f0f7;
+}
+/*
+ * Summary Report
+ */
+.summary-report-container {
+  max-width: 500px;
+}

@@ -1,0 +1,189 @@
+/*
+ * Common styles for expense tracker
+ */
+
+html {
+    font-size: @baseFontSize;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+.btn.btn-table {
+    padding: 2px 7px !important;
+}
+
+.input-field {
+    display: inline-block;
+}
+
+.amount {
+    text-align: right;
+}
+
+input.text, input.form-control.text {
+    width: 10.0rem !important;
+}
+
+.sort-button-wrapper {
+    display: inline-block;
+    width: 1.6rem;
+}
+
+.sort-button {
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+.row.wide-row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        padding-top: 7.0rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        padding-top: 11.0rem;
+    }
+}
+
+/*
+ * Basic Table
+ */
+
+.basic-table {
+
+    table-layout: fixed;
+
+    th {
+        font-weight: normal;
+        border-bottom: none !important;
+        background-color: @tableHeaderBgColor;
+        color: @tableHeaderColor;
+
+        a {
+            color: #000000;
+            color: @tableHeaderColor;
+        }
+    }
+
+    th, td {
+        width: 25%;
+    }
+    th.row-commands, td.row-commands {
+        width: 7.5rem;
+    }
+
+    input.text, input.form-control.text {
+        width: 80% !important;
+    }
+}
+
+/*
+ * Page Header
+ */
+
+.page-header {
+    padding: 10px;
+    margin: 0px 0px 20px 0px;
+    background-color: @pageHeaderBgColor;
+    border: solid 1px #c3e2f7;
+
+    .page-title {
+        font-weight: bold;
+        padding: 0px;
+        padding-top: 5px;
+        margin: 0px;
+        display: inline-block;
+        line-height: 1.42857143;
+        font-size: 2.0rem;
+    }
+
+    .page-links {
+        float: right;
+
+        .form-group.filter {
+            display: inline-block;
+            white-space: nowrap;
+            margin: 0px;
+
+            .form-control {
+                display: inline-block;
+                width: auto;
+            }
+        }
+    }
+}
+
+/*
+ * Bootstrap Overrides
+ */
+
+.dropdown-menu {
+    font-size: 1.4rem !important;
+}
+
+.btn-sm {
+    font-size: 1.2rem !important;
+}
+
+.form-control {
+    font-size: 1.4rem !important;
+}
+
+
+/* UI Bootstrap Date Picker */
+
+table.uib-daypicker {
+
+    th, td {
+        width: auto;
+    }
+
+    td.uib-day {
+        border: none !important;
+
+        button {
+            border: none !important;
+        }
+    }
+}
+
+.uib-datepicker-popup {
+    width: 24.0rem;
+}
+
+/* Error styling */
+
+.error-msg {
+    font-size: 1.2rem;
+    color: red;
+}
+
+form {
+    input, select {
+        border-color: blue;
+    }
+
+    input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+        border-color: red;
+    }
+
+    input.ng-valid.ng-touched, select.ng-valid.ng-touched {
+        border-color: green;
+    }
+}
+
+
+
+
+
+
+

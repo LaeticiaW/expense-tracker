@@ -1,0 +1,39 @@
+<div class="container content-container report-container yearly-report-container">
+
+    <div class="row page-header">         
+        <h2 class="page-title">Yearly Expenses</h3>
+        <div class="page-links">   
+            <span class="form-group show-subcategory-checkbox">
+                <label>
+                    <input type="checkbox" ng-model="showSubcategories"> Show Subcategories
+                </label>                
+            </span>                                                      
+        </div>  
+    </div>           
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-condensed table-responsive yearly-report-data">
+            <caption class="sr-only">Yearly category and subcategory expense totals</caption>
+            <thead>
+                <tr>
+                    <th class="category"><span>Category</span></th>    
+                    <th><span>Subcategory</span></th>  
+                    <th ng-repeat="year in reportYears">{{year}}</th>                                                                  
+                </tr>
+            </thead>
+            <tbody>
+                <tr  ng-repeat="data in reportRows" ng-if="data.isCategoryRow || showSubcategories" ng-class="data.isCategoryRow ? 'category-row report-row' : 'subcategory-row report-row'">                
+                    <td colspan="2" class="text" ng-if="data.isCategoryRow">{{data._id.category.name}}</td>
+                    <td class="text empty-category-cell" ng-if="!data.isCategoryRow"></td>
+                    <td class="text subcategory-cell" ng-if="!data.isCategoryRow">{{data._id.subcategory}}</td>  
+                    <td class="amount" ng-repeat="year in reportYears">{{data.yearMap[year] | number:2}}</td>
+                </tr>
+                <tr class="report-row report-totals">               
+                    <td colspan="2" class="total-text">Totals</td>                
+                    <td class="amount" ng-repeat="year in reportYears">{{yearlyTotals[year] | number:2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

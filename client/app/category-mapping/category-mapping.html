@@ -1,0 +1,105 @@
+<div class="container content-container category-mapping-container">
+
+    <div class="row wide-row page-header" style="min-width: 436px;">
+        <h2 class="page-title">Category Mapping</h2>
+        <div class="page-links">
+            <span class="form-group filter">
+                <form-group>
+                    <label>Category:</label>
+                    <select class="form-control" ng-model="mappingFilterCategory">
+                        <option value="all">All Categories</option>
+                        <option ng-repeat="cat in categories" value="{{cat.name}}">{{cat.name}}</option>
+                    </select>
+                    <button type="button" class="btn btn-sm btn-default" ng-click="filterMappings()">Go</button>
+                </form-group>
+            </span>
+            <span class="form-group add-wrapper">
+                <button type="button" class="btn btn-sm btn-primary glyphicon glyphicon-plus" ng-click="addMapping()"></button>
+            </span>
+
+        </div>
+    </div>
+
+    <form name="categoryMappingForm" novalidate>
+
+        <table class="table table-bordered table-hover table-condensed table-responsive table-striped basic-table category-mapping-data">
+            <thead>
+                <tr>
+                <th>
+                    <a tabindex="0" ng-click="sortMappings('searchText')" role="button">Search Text</a>
+                    <span class="sort-button-wrapper">
+                        <button ng-if="sort.property === 'searchText' && sort.direction === 'ascending'" class="glyphicon glyphicon-triangle-top sort-button" ng-click="sortMappings('searchText')"/>
+                        <button ng-if="sort.property === 'searchText' && sort.direction === 'descending'" class="glyphicon glyphicon-triangle-bottom sort-button" ng-click="sortMappings('searchText')"/>
+                    </span>
+                </th>
+                <th>
+                    <a tabindex="0" ng-click="sortMappings('category', 'name')" role="button">Category</a>
+                    <span class="sort-button-wrapper">
+                        <button ng-if="sort.property === 'category' && sort.direction === 'ascending'" class="glyphicon glyphicon-triangle-top sort-button" ng-click="sortMappings('category', 'name')"/>
+                        <button ng-if="sort.property === 'category' && sort.direction === 'descending'" class="glyphicon glyphicon-triangle-bottom sort-button" ng-click="sortMappings('category', 'name')"/>
+                    </span>
+                </th>
+                <th>
+                    <a tabindex="0" ng-click="sortMappings('subcategory')" role="button">Subcategory</a>
+                    <span class="sort-button-wrapper">
+                        <button ng-if="sort.property === 'subcategory' && sort.direction === 'ascending'" class="glyphicon glyphicon-triangle-top sort-button" ng-click="sortMappings('subcategory')"/>
+                        <button ng-if="sort.property === 'subcategory' && sort.direction === 'descending'" class="glyphicon glyphicon-triangle-bottom sort-button" ng-click="sortMappings('subcategory')"/>
+                    </span>
+                </th>
+                <th class="row-commands"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="mapping-row" ng-repeat="mapping in filteredMappings" ng-switch on="mapping.mode">
+                    <!-- View mode -->
+                    <td class="mapping-view" ng-switch-default>
+                        {{mapping.searchText}}
+                    </td>
+                    <td class="mapping-view" ng-switch-default>
+                        {{mapping.category.name}}
+                    </td>
+                    <td class="mapping-view" ng-switch-default>
+                        {{mapping.subcategory}}
+                    </td>
+                    <td class="mapping-view view-controls row-commands" ng-switch-default>
+                        <button class="btn btn-sm btn-primary btn-table glyphicon glyphicon-pencil" ng-click="editMapping(mapping)"></button>
+                        <button class="btn btn-sm btn-default btn-table glyphicon glyphicon-remove"
+                                mwl-confirm title="Delete Confirmation" message="Are you sure you want to delete the category mapping?" on-confirm="deleteMapping(mapping)"></button>
+                    </td>
+
+                    <!-- Edit mode -->
+                    <td class="mapping-edit" ng-switch-when="edit">
+                        <input type="text" name="searchText" class="form-control" maxlength="300" ng-model="mapping.searchText" required auto-focus>
+                        <p ng-show="categoryMappingForm.searchText.$invalid && categoryMappingForm.searchText.$touched" class="error-msg">
+                            Search Text is required
+                        </p>
+                    </td>
+                    <td class="transaction-edit" ng-switch-when="edit">
+                        <select class="form-control" name="category" ng-model="mapping.selectedCategory" ng-options="cat.name for cat in categories" ng-change="categorySelected(mapping.selectedCategory)" required>
+                            <option value=""></option>
+                        </select>
+                        <p ng-show="categoryMappingForm.category.$invalid && categoryMappingForm.category.$touched" class="error-msg">
+                            Category is required
+                        </p>
+                    </td>
+                    <td class="mapping-edit" ng-switch-when="edit">
+                        <span class="nullable">
+                            <select class="form-control" name="subcategory" ng-model="mapping.selectedSubcategory" ng-options="subcat.name for subcat in mapping.selectedCategory.subcategories" required>
+                                <option value=""></option>
+                            </select>
+                            <p ng-show="categoryMappingForm.subcategory.$invalid && categoryMappingForm.subcategory.$touched" class="error-msg">
+                                Subcategory is required
+                            </p>
+                        </span>
+                    </td>
+                    <td class="edit-controls row-commands" ng-switch-when="edit">
+                        <button class="btn btn-default btn-sm btn-primary btn-table" type="button" ng-click="saveMapping(mapping)">Save</button>
+                        <button class="btn btn-default btn-sm btn-table" type="button" ng-click="cancelMapping(mapping)">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+
+</div>
