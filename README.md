@@ -13,6 +13,7 @@ Features:
 This web application was written in Javascript using the MEAN tech stack: AngularJS, Node, Express, MongoDB and Bootstrap.
 
 ## Dependencies
-* Node and npm, which can be installed from this site: https://nodejs.org/en/
+* Node and npm, which can be installed from https://nodejs.org/en/
+* MongoDB, which can be installed from https://www.mongodb.org/ and configured to run on port 27017
 
 ## To start and run the Expense Tracker web app
