@@ -68,7 +68,7 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
                     toastr.error('Unable to save the category', 'Expense Tracker Processing Error');
                 });
             } else {
-                cat.$update(function(response) {
+                cat.$update(function() {
                     $scope.sortCategories(false);
                 }, function(errorResponse) {
                     console.log("Category update failed: ", errorResponse);
