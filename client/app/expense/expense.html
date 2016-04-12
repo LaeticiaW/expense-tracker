@@ -115,7 +115,7 @@
                         </span>
                     </td>
                     <td class="expense-edit" ng-switch-when="edit">
-                        <input name="amount" type="text" class="form-control"  maxlength="300" ng-model="expense.amount" required focus="focusCategoryInput">
+                        <input name="amount" type="number" class="form-control"  maxlength="300" ng-model="expense.amount" required focus="focusCategoryInput">
                         <p ng-show="expenseForm.amount.$invalid && expenseForm.amount.$touched" class="error-msg">
                                 Amount is required
                             </p>

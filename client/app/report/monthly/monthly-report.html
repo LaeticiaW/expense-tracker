@@ -23,6 +23,7 @@
     <div class="row wide-row table-responsive">
         <table class="table table-bordered table-hover table-condensed monthly-report">
             <caption class="sr-only">Monthly category and subcategory expense totals</caption>
+
             <thead>
                 <tr>
                     <th scope="col" class="category"><span>Category</span></th>
@@ -52,7 +53,7 @@
                     <td class="Q1">{{data.monthMap[2] | number:0}}</td>
                     <td class="Q2">{{data.monthMap[3] | number:0}}</td>
                     <td class="Q2">{{data.monthMap[4] | number:0}}</td>
-                    <td class="Q2" >{{data.monthMap[5] | number:0}}</td>
+                    <td class="Q2">{{data.monthMap[5] | number:0}}</td>
                     <td class="Q3">{{data.monthMap[6] | number:0}}</td>
                     <td class="Q3">{{data.monthMap[7] | number:0}}</td>
                     <td class="Q3">{{data.monthMap[8] | number:0}}</td>
@@ -63,7 +64,18 @@
                 </tr>
                 <tr class="report-row report-totals">
                     <td colspan="2" class="total-text">Monthly Totals <span class="sr-only"> for all categories</span></td>
-                    <td ng-repeat="monthTotal in reportMonthlyTotals track by $index">{{monthTotal | number:0}}</td>
+                    <td class="Q1">{{reportMonthlyTotals[0] | number:0}}</td>
+                    <td class="Q1">{{reportMonthlyTotals[1] | number:0}}</td>
+                    <td class="Q1">{{reportMonthlyTotals[2] | number:0}}</td>
+                    <td class="Q2">{{reportMonthlyTotals[3] | number:0}}</td>
+                    <td class="Q2">{{reportMonthlyTotals[4] | number:0}}</td>
+                    <td class="Q2">{{reportMonthlyTotals[5] | number:0}}</td>
+                    <td class="Q3">{{reportMonthlyTotals[6] | number:0}}</td>
+                    <td class="Q3">{{reportMonthlyTotals[7] | number:0}}</td>
+                    <td class="Q3">{{reportMonthlyTotals[8] | number:0}}</td>
+                    <td class="Q4">{{reportMonthlyTotals[9] | number:0}}</td>
+                    <td class="Q4">{{reportMonthlyTotals[10] | number:0}}</td>
+                    <td class="Q4">{{reportMonthlyTotals[11] | number:0}}</td>
                     <td>{{reportYearlyTotal | number:0}}</td>
                 </tr>
             </tbody>

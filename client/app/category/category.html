@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <th>
-                        <a tabindex="0" ng-click="sortCategories('name')" role="button">Category</a>
+                        <a tabindex="0" ng-click="sortCategories(true)" role="button">Category</a>
                         <span class="sort-button-wrapper">
                             <button ng-if="sort.property === 'name' && sort.direction === 'ascending'" class="glyphicon glyphicon-triangle-top sort-button" ng-click="sortCategories('category')"/>
                             <button ng-if="sort.property === 'name' && sort.direction === 'descending'" class="glyphicon glyphicon-triangle-bottom sort-button" ng-click="sortCategories('category')"/>

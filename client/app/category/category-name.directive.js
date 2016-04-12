@@ -18,7 +18,6 @@ angular.module('common').directive('categoryNameValidator', ['$http', '$q', 'Cat
                     return Category.isCategoryNameUnique(
                         {categoryName: viewValue},
                         function(response) {
-                            console.log("isCategoryNameUnique:", response.isCategoryNameUnique);
                             if (!response.isCategoryNameUnique) {
                                 ngModelController.$setValidity('category', false);
                                 return $q.reject("Duplicate category name");

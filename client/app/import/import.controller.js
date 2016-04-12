@@ -1,7 +1,7 @@
 
 angular.module('import').controller('ImportController', ['$scope', 'Papa', 'ImportService',
-                                    'CommonService', 'categories', 'categoryMappings',
-    function($scope, Papa, ImportService, CommonService, categories, categoryMappings) {
+                                    'CommonService', 'toastr', 'categories', 'categoryMappings',
+    function($scope, Papa, ImportService, CommonService, toastr, categories, categoryMappings) {
 
         initialize();
 
@@ -46,13 +46,11 @@ angular.module('import').controller('ImportController', ['$scope', 'Papa', 'Impo
         }
 
         $scope.selectFile = function() {
-            console.log("select file");
+
             $('.import-input').click();
         };
 
         $scope.uploadFile = function() {
-
-            console.log("File:", $scope.csvFile);
 
             Papa.parse($scope.csvFile, {
                 complete: function(results) {
@@ -108,6 +106,10 @@ angular.module('import').controller('ImportController', ['$scope', 'Papa', 'Impo
 
         $scope.importData = function() {
 
+            var numImportRows = $scope.gridOptions.data.length,
+                numImported = 0,
+                msg = "";
+
             $scope.expenses = $scope.gridOptions.data.filter(function(expense) {
                 return expense.category._id && expense.subcategory && expense.trxDate;
             });
@@ -118,13 +120,20 @@ angular.module('import').controller('ImportController', ['$scope', 'Papa', 'Impo
 
             ImportService.insertExpenses($scope.expenses).then(
                 function() {
-                    console.log("insertSpending success");
                     $scope.gridOptions.data = $scope.gridOptions.data.filter(function(expense) {
                         return !expense.category._id || !expense.subcategory || !expense.trxDate;
                     });
+                    numImported = numImportRows - $scope.gridOptions.data.length;
+                    msg = "Imported " + numImported + " of " + numImportRows + " expenses. ";
+                    console.log(msg);
+                    if ($scope.gridOptions.data.length) {
+                        msg += "Please select category and subcategory on remaining rows to import";
+                    }
+                    toastr.info(msg);
                 },
                 function(response) {
-                    console.log("insertSpending error:", response);
+                    console.log("import expenses error:", response);
+                    toastr.error('Unable to import the expense', 'Expense Tracker Processing Error');
                 }
             );
         };

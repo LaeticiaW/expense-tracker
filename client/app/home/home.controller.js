@@ -1,6 +1,7 @@
 
-angular.module('home').controller('HomeController', ['$scope', '$http', 'HomeService', 'CommonService', 'categories',
-    function($scope, $http, HomeService, CommonService, categories) {
+angular.module('home').controller('HomeController', ['$scope', '$http', 'HomeService', 'CommonService',
+    'toastr', 'categories',
+    function($scope, $http, HomeService, CommonService, toastr, categories) {
 
         initialize();
 
@@ -37,6 +38,7 @@ angular.module('home').controller('HomeController', ['$scope', '$http', 'HomeSer
                 },
                 function(response) {
                     console.log("Client report controller, error:", response);
+                    toastr.error('Unable to retrieve the home report data', 'Expense Tracker Processing Error');
                 }
             );
         }

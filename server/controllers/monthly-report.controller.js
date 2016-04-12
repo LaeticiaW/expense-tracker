@@ -52,7 +52,7 @@ exports.getMonthlyExpenses = function(req, res, next) {
             console.log("Server report controller getMonthlyExpenses error:", err);
             return next(err);
         } else {
-
+console.log("MONTHLYREP: ", result);
             Category.populate(result, {path: "_id.category"}, function(err, data) {
 
                 if (err) {

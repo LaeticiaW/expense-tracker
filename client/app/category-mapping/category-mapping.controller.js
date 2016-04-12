@@ -1,8 +1,8 @@
 
 angular.module('categoryMapping').controller('CategoryMappingController', ['$scope', '$http', 'CategoryMapping',
-    'categoryMappingFilter', 'CommonService', 'categories',
+    'categoryMappingFilter', 'CommonService', 'toastr', 'categories',
 
-    function($scope, $http, CategoryMapping, categoryMappingFilter, CommonService, categories) {
+    function($scope, $http, CategoryMapping, categoryMappingFilter, CommonService, toastr, categories) {
 
         initialize();
 
@@ -100,8 +100,6 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
             mapping.category = mapping.selectedCategory;
             mapping.subcategory = mapping.selectedSubcategory.name;
 
-            // validate
-
             var map = new CategoryMapping(mapping);
 
             if (mapping.state === 'add') {
@@ -110,11 +108,13 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
                     CommonService.addCategory(mapping, $scope.categories, 'category');
                 }, function(errorResponse) {
                     console.log("CategoryMapping save failed: ", errorResponse);
+                    toastr.error('Unable to save the category mapping', 'Expense Tracker Processing Error');
                 });
             } else {
                 map.$update(function() {
                 }, function(errorResponse) {
                     console.log("CategoryMapping update failed: ", errorResponse);
+                    toastr.error('Unable to save the category mapping', 'Expense Tracker Processing Error');
                 });
             }
 
@@ -150,7 +150,8 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
                 });
                 $scope.filterMappings();
             }, function(errorResponse) {
-                console.log("CategoryMapping remove failed: ", errorResponse);
+                console.log("CategoryMapping delete failed: ", errorResponse);
+                toastr.error('Unable to delete the category mapping', 'Expense Tracker Processing Error');
             });
         };
 

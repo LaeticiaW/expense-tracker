@@ -1,7 +1,7 @@
 angular.module('expense').controller('ExpenseController', ['$scope', '$timeout', 'Expense',
-   'expenseFilter', 'CommonService', 'categories',
+   'expenseFilter', 'CommonService', 'toastr', 'categories',
 
-    function($scope, $timeout, Expense, expenseFilter, CommonService, categories) {
+    function($scope, $timeout, Expense, expenseFilter, CommonService, toastr, categories) {
 
         initialize();
 
@@ -93,12 +93,11 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
             expense.categoryId = expense.selectedCategory._id;
             expense.subcategory = expense.selectedSubcategory.name;
 
-            expense.amount = parseInt(expense.amount, 10);
-
             var exp = new Expense(expense);
 
             if (expense.state === 'add') {
-                exp.$save(function() {
+                exp.$save(function(response) {
+                    expense._id = response._id;
                     CommonService.addCategory(expense, $scope.categories, 'category');
                     expense.trxDate = new Date(expense.trxDate);
                     $scope.expenses.push(expense);
@@ -106,6 +105,7 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                     CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
                 }, function(errorResponse) {
                     console.log("Save expense failed: ", errorResponse);
+                    toastr.error('Unable to save the expense', 'Expense Tracker Processing Error');
                 });
             } else {
                 exp.$update(function() {
@@ -113,6 +113,7 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                     CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
                 }, function(errorResponse) {
                     console.log("Update expense failed: ", errorResponse);
+                    toastr.error('Unable to save the expense', 'Expense Tracker Processing Error');
                 });
             }
 
@@ -149,7 +150,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                 $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
                 CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
             }, function(errorResponse) {
-                console.log("Expense remove failed: ", errorResponse);
+                console.log("Expense delete failed: ", errorResponse);
+                toastr.error('Unable to delete the expense', 'Expense Tracker Processing Error');
             });
         };
 
@@ -219,6 +221,7 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
             }, function(errorResponse) {
                 console.log("Error retrieving expense data");
                 errorResponse.statusText = "Unable to retrieve expense";
+                toastr.error('Unable to retrieve the expenses', 'Expense Tracker Processing Error');
             });
         }
 

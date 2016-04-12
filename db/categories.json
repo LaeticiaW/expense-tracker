@@ -1,0 +1,9 @@
+{ "_id" : ObjectId("570cd040b2e0a562cd119b52"), "name" : "Yard", "subcategories" : [ { "name" : "Lawn Service" }, { "name" : "Miscellaneous" }, { "name" : "Plants" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b53"), "name" : "Groceries", "subcategories" : [ { "name" : "Food Lion" }, { "name" : "Harris Teeter" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b54"), "name" : "Auto", "subcategories" : [ { "name" : "Gas" }, { "name" : "Insurance" }, { "name" : "Service" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b55"), "name" : "Travel", "subcategories" : [ { "name" : "Restaurants" }, { "name" : "Hotels" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b56"), "name" : "Running", "subcategories" : [ { "name" : "RunSmart" }, { "name" : "Shoes" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b57"), "name" : "Medical", "subcategories" : [ { "name" : "Dental" }, { "name" : "Eye Glasses" }, { "name" : "Medical" }, { "name" : "Prescriptions" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b58"), "name" : "Restaurants", "subcategories" : [ { "name" : "Breakfast" }, { "name" : "Dinner" }, { "name" : "Drinks/Snacks" }, { "name" : "Fast Food" } ] }
+{ "_id" : ObjectId("570cd040b2e0a562cd119b59"), "name" : "Utilities", "subcategories" : [ { "name" : "Aqua" }, { "name" : "Cell Phone" }, { "name" : "Electric" }, { "name" : "Gas" }, { "name" : "Time Warner Cable" }, { "name" : "Water" } ] }
+

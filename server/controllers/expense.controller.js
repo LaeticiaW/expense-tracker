@@ -2,8 +2,6 @@ var ExpenseModel = require('mongoose').model('ExpenseModel');
 
 exports.create = function(req, res, next) {
 
-    console.log("Server expense controller create");
-
     var expense = new ExpenseModel(req.body);
 
     expense.trxYear = expense.trxDate.getFullYear();
@@ -90,6 +88,7 @@ exports.isCategoryInUse = function(req, res, next) {
     ExpenseModel.findOne({categoryId: req.params.categoryId}, function(err, expense) {
 
         if (err) {
+            console.log("Server, err:", err);
             return next(err);
         } else {
             if (expense) {

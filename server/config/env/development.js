@@ -1,4 +1,4 @@
 module.exports = {
-    db: 'mongodb://localhost/expense-tracker-db',
+    db: 'mongodb://localhost/expenseTracker',
     sessionSecret: 'developmentSessionSecret'
 };

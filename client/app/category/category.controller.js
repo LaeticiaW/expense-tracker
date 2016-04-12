@@ -55,7 +55,6 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
                 return subcategory.name.length;
             });
 
-            $scope.sortCategories();
             $scope.sortSubcategories(category);
 
             var cat = new Category(category);
@@ -63,13 +62,14 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
             if (category.state === 'add') {
                 cat.$save(function(response) {
                     angular.copy(response, category);
+                    $scope.sortCategories(false);
                 }, function(errorResponse) {
                     console.log("Category save failed: ", errorResponse);
                     toastr.error('Unable to save the category', 'Expense Tracker Processing Error');
                 });
             } else {
                 cat.$update(function(response) {
-                    angular.copy(response, category);
+                    $scope.sortCategories(false);
                 }, function(errorResponse) {
                     console.log("Category update failed: ", errorResponse);
                     toastr.error('Unable to save the category', 'Expense Tracker Processing Error');
@@ -106,7 +106,7 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
                                 return cat._id !== category._id;
                             });
                         }, function(errorResponse) {
-                            console.log("Category remove failed: ", errorResponse);
+                            console.log("Category delete failed: ", errorResponse);
                             toastr.error('Unable to delete the category', 'Expense Tracker Processing Error');
                         });
                     }
@@ -115,7 +115,6 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
                     toastr.error('Unable to delete the category', 'Expense Tracker Processing Error');
                 }
             );
-
         };
 
         $scope.addSubcategory = function(category) {
@@ -136,12 +135,14 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
             });
         };
 
-        $scope.sortCategories = function() {
+        $scope.sortCategories = function(toggleSortDirection) {
 
-            if ($scope.sort.direction === 'ascending') {
-                $scope.sort.direction = 'descending';
-            } else {
-                $scope.sort.direction = 'ascending';
+            if (toggleSortDirection) {
+                if ($scope.sort.direction === 'ascending') {
+                    $scope.sort.direction = 'descending';
+                } else {
+                    $scope.sort.direction = 'ascending';
+                }
             }
 
             CommonService.sortObjectArray($scope.categories, $scope.sort);
