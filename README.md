@@ -64,8 +64,10 @@ Start the node server
 
 Open a browser and start the web app
 ```shell
-http://127.0.0.1:8080/
+http://127.0.0.1:3000/
 ```
+
+Note:  To test out the Import Expenses menu item, there is a sampleImportData.csv file in the expense-tracker-master/db directory.
 
 ## Expense-Tracker Description
 
