@@ -64,7 +64,7 @@ module.exports = function (grunt) {
         ngAnnotate: {
             app: {
                 files: {
-                    'client/app/expense-tracker.annotated.js': ['client/app/**/*.js']
+                    'dist/js/expense-tracker.annotated.js': ['client/app/**/*.js']
                 }
             }
         },
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
             },
             app: {
                 files: {
-                    'dist/js/expense-tracker.min.js': ['client/app/expense-tracker.annotated.js']
+                    'dist/js/expense-tracker.min.js': ['dist/js/expense-tracker.annotated.js']
                 }
             }
         },
