@@ -55,7 +55,7 @@ angular.module('import').controller('ImportController', ['$scope', 'Papa', 'Impo
             Papa.parse($scope.csvFile, {
                 complete: function(results) {
 
-                    var amount, description, categoryMapping;
+                    var trxDate, amount, description, categoryMapping;
 
                     $scope.dataUploaded = true;
                     $scope.gridOptions.data = [];
@@ -63,15 +63,16 @@ angular.module('import').controller('ImportController', ['$scope', 'Papa', 'Impo
                     results.data.forEach(function(row) {
                         if (row.length >= 3) {
 
+                            trxDate = new Date(row[0]);
                             amount = row[1] * -1;
-                            description = row[4];
+                            description = row[2];
 
                             if (amount > 0) {
                                 categoryMapping = getCategoryMapping(description);
                                 $scope.gridOptions.data.push({
-                                    trxDate: new Date(row[0]),
+                                    trxDate: trxDate,
                                     amount: amount,
-                                    description: row[4],
+                                    description: description,
                                     category: categoryMapping.category,
                                     subcategory: categoryMapping.subcategory
                                 });
