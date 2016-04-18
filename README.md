@@ -1,6 +1,6 @@
 # expense-tracker
 
-![Expenses](LaeticiaW.github.com/expense-tracker/img/expenses.jpg)
+![ScreenShot](img/expenses.png)
 
 ## Summary
 The expense-tracker application allows users to enter and report on their expenses.
