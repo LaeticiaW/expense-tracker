@@ -4,21 +4,23 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'client/lib/jquery/dist/jquery.js',
-      'client/lib/angular/angular.js',
-      'client/lib/angular-ui-router/release/angular-ui-router.js',
-      'client/lib/angular-resource/angular-resource.js',
-      'client/lib/angular-animate/angular-animate.js',
-      'client/lib/Chart.js/Chart.js',
-      'client/lib/angular-chart.js/dist/angular-chart.js',
-      'client/lib/angular-ui-grid/ui-grid.min.js',
-      'client/lib/angular-toastr/dist/angular-toastr.tpls.min.js',
-      'client/lib/angular-mocks/angular-mocks.js',
-      'client/lib/papaparse/papaparse.min.js',
-      'client/lib/bootstrap/dist/js/bootstrap.js',
-      'client/lib/ui-bootstrap-tpls-1.1.2.js',
-      'client/lib/angular-sanitize/angular-sanitize.min.js',
-      'client/lib/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js',
+      'client/bower_components/jquery/dist/jquery.js',
+      'client/bower_components/bootstrap/dist/js/bootstrap.js',
+      'client/bower_components/Chart.js/Chart.js',
+      'client/bower_components/papaparse/papaparse.min.js',
+
+      'client/bower_components/angular/angular.js',
+      'client/bower_components/angular-mocks/angular-mocks.js',
+      'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/angular-resource/angular-resource.js',
+      'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-chart.js/dist/angular-chart.js',
+      'client/bower_components/angular-ui-grid/ui-grid.min.js',
+      'client/bower_components/angular-toastr/dist/angular-toastr.tpls.min.js',
+      'client/bower_components/angular-bootstrap/ui-bootstrap.min.js',
+      'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      'client/bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js',
+      'client/bower_components/angular-sanitize/angular-sanitize.min.js',
 
       'client/app/common/common.module.js',
       'client/app/common/common.service.js',
@@ -44,7 +46,6 @@ module.exports = function(config){
       'client/app/category-mapping/category-mapping.filter.js',
       'client/app/category-mapping/category-mapping.controller.js',
       'client/app/category-mapping/category-mapping.service.js',
-
       'client/app/report/**/*.module.js',
       'client/app/report/**/*.js',
 
@@ -84,7 +85,7 @@ module.exports = function(config){
     },
 
     specReporter: {
-        maxLogLines: 10,              // limit number of lines logged per test
+        maxLogLines: 10,             // limit number of lines logged per test
         suppressErrorSummary: false, // do not print error summary
         suppressFailed: false,       // do not print information about failed tests
         suppressPassed: false,       // do not print information about passed tests
