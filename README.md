@@ -1,5 +1,7 @@
 # expense-tracker
 
+![Expenses](LaeticiaW.github.com/expense-tracker/img/expenses.jpg)
+
 ## Summary
 The expense-tracker application allows users to enter and report on their expenses.
 
@@ -25,12 +27,12 @@ Download and unzip the expense-tracker zip file
 https://github.com/LaeticiaW/expense-tracker/archive/master.zip
 ```
 
-Go to the project directory 
+Go to the project directory
 ```shell
 cd expense-tracker-master
 ```
 
-Install the npm packages 
+Install the npm packages
 ```shell
 npm install
 ```
@@ -57,7 +59,7 @@ Go back to the expense-tracker-master project directory
 cd ..
 ```
 
-Start the node server 
+Start the node server
 ```shell
 ./start_server.sh
 ```
@@ -71,7 +73,7 @@ Note:  To test out the Import Expenses menu item, there is a sampleImportData.cs
 
 ## Expense-Tracker Description
 
-* There are 4 main menu options:  Home, Categories, Expenses, and Reports. 
+* There are 4 main menu options:  Home, Categories, Expenses, and Reports.
 * The Home page displays a pie chart showing expenses by category for the specified year.
 * The Categories page allows users to View, Add, Update, and Delete categories.  A category consists of a name and a list of subcategories.
 * The Expenses menu item has 3 submenu items:  Manage Expenses, Import Expenses, and Category Mapping
