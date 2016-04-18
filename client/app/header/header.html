@@ -20,10 +20,10 @@
 
             <h1 class="header-title header-title-expanded-nav hidden-xs">Expense Tracker</h1>
 
-            <ul class="nav navbar-nav menu">
+            <ul class="nav navbar-nav menu expense-tracker-menu">
                 <li class="first-nav-item"><a ng-href="/">Home</a></li>
-                <li><a ui-sref=".categories">Categories</a></li>
-                <li class="dropdown">
+                <li><a ui-sref=".categories" class="nav-item">Categories</a></li>
+                <li class="dropdown expenses-menu">
                     <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Expenses<span class="caret"></span></a>
                     <ul class="dropdown-menu submenu">
                         <li><a ui-sref=".expenses">Manage Expenses</a></li>
@@ -31,12 +31,12 @@
                         <li><a ui-sref=".category-mappings">Category Mapping</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown reports-menu">
                     <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Reports<span class="caret"></span></a>
                     <ul class="dropdown-menu submenu">
                         <li><a ui-sref=".monthly-report">Monthly Expenses</a></li>
                         <li><a ui-sref=".yearly-report">Yearly Expenses</a></li>
-                        <li><a ui-sref=".summary-report">Expense summary</a></li>
+                        <li><a ui-sref=".summary-report">Expense Summary</a></li>
                     </ul>
                 </li>
             </ul>
