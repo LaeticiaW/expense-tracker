@@ -1,7 +1,7 @@
 
 angular.module('category').controller('CategoryController', ['$scope', '$http', '$timeout', '$location',
-    'Category', 'Expense', 'CommonService', 'toastr', 'categories',
-    function($scope, $http, $timeout, $location, Category, Expense, CommonService, toastr, categories) {
+    'Category', 'Expense', 'orderByFilter', 'toastr', 'categories',
+    function($scope, $http, $timeout, $location, Category, Expense, orderByFilter, toastr, categories) {
 
         initialize();
 
@@ -12,14 +12,18 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
             $scope.focusCategoryInput = true;
             //$scope.focusSubcategoryInput = true;
             $scope.errors = [];
+
             $scope.sort = {
                 property: 'name',
                 subProperty: undefined,
                 direction: 'ascending',
-                type: 'string'
+                type: 'string',
+                getPropertyName: function() {
+                    return this.property + (this.subProperty ? '.' + this.subProperty : '');
+                }
             };
 
-            CommonService.sortObjectArray($scope.categories, $scope.sort);
+            $scope.categories = orderByFilter($scope.categories, $scope.sort.getPropertyName(), false);
         }
 
         $scope.addCategory = function() {
@@ -137,20 +141,24 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
 
         $scope.sortCategories = function(toggleSortDirection) {
 
+            var reverse = $scope.sort.direction === 'descending';
+
             if (toggleSortDirection) {
                 if ($scope.sort.direction === 'ascending') {
                     $scope.sort.direction = 'descending';
+                    reverse = true;
                 } else {
                     $scope.sort.direction = 'ascending';
+                    reverse = false;
                 }
             }
 
-            CommonService.sortObjectArray($scope.categories, $scope.sort);
+            $scope.categories = orderByFilter($scope.categories, $scope.sort.getPropertyName(), reverse);
         };
 
         $scope.sortSubcategories = function(category) {
 
-            CommonService.sortObjectArray(category.subcategories, $scope.sort);
+            category.subcategories = orderByFilter(category.subcategories, $scope.sort.getPropertyName(), false);
         };
 
         function resetCategories() {
