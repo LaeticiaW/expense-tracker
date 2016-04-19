@@ -1,7 +1,7 @@
 angular.module('expense').controller('ExpenseController', ['$scope', '$timeout', 'Expense',
-   'expenseFilter', 'CommonService', 'toastr', 'categories',
+   'expenseFilter', 'CommonService', 'orderByFilter', 'toastr', 'categories',
 
-    function($scope, $timeout, Expense, expenseFilter, CommonService, toastr, categories) {
+    function($scope, $timeout, Expense, expenseFilter, CommonService, orderByFilter, toastr, categories) {
 
         initialize();
 
@@ -22,7 +22,9 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                 property: 'trxDate',
                 subProperty: undefined,
                 direction: 'ascending',
-                type: 'number'
+                getPropertyName: function() {
+                    return this.property + (this.subProperty ? '.' + this.subProperty : '');
+                }
             };
 
             $scope.filter = {
@@ -102,7 +104,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                     expense.trxDate = new Date(expense.trxDate);
                     $scope.expenses.push(expense);
                     $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
-                    CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+                    $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
                 }, function(errorResponse) {
                     console.log("Save expense failed: ", errorResponse);
                     toastr.error('Unable to save the expense', 'Expense Tracker Processing Error');
@@ -110,7 +113,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
             } else {
                 exp.$update(function() {
                     $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
-                    CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+                    $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
                 }, function(errorResponse) {
                     console.log("Update expense failed: ", errorResponse);
                     toastr.error('Unable to save the expense', 'Expense Tracker Processing Error');
@@ -135,7 +139,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
             }
 
             $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
-            CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+            $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
         };
 
         $scope.deleteExpense = function(expense) {
@@ -148,7 +153,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
                 });
 
                 $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
-                CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+                $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
             }, function(errorResponse) {
                 console.log("Expense delete failed: ", errorResponse);
                 toastr.error('Unable to delete the expense', 'Expense Tracker Processing Error');
@@ -157,9 +163,12 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
 
         $scope.sortExpenses = function(property, subProperty) {
 
+            var reverse = false;
+
             if ($scope.sort.property === property) {
                 if ($scope.sort.direction === 'ascending') {
                     $scope.sort.direction = 'descending';
+                    reverse = true;
                 } else {
                     $scope.sort.direction = 'ascending';
                 }
@@ -169,9 +178,9 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
 
             $scope.sort.property = property;
             $scope.sort.subProperty = subProperty;
-            $scope.sort.type = (property === 'trxDate' || property === 'amount') ? 'number' : 'string';
 
-            CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+            $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
         };
 
         $scope.categorySelected = function(cat) {
@@ -217,7 +226,8 @@ angular.module('expense').controller('ExpenseController', ['$scope', '$timeout',
 
                 $scope.filteredExpenses = expenseFilter($scope.expenses, $scope.filter);
 
-                CommonService.sortObjectArray($scope.filteredExpenses, $scope.sort);
+                $scope.filteredExpenses = orderByFilter($scope.filteredExpenses, $scope.sort.getPropertyName(),
+                        $scope.sort.direction === 'descending');
             }, function(errorResponse) {
                 console.log("Error retrieving expense data");
                 errorResponse.statusText = "Unable to retrieve expense";
