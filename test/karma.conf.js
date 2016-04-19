@@ -4,16 +4,16 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'client/bower_components/jquery/dist/jquery.js',
-      'client/bower_components/bootstrap/dist/js/bootstrap.js',
+      'client/bower_components/jquery/dist/jquery.min.js',
+      'client/bower_components/bootstrap/dist/js/bootstrap.min.js',
       'client/bower_components/Chart.js/Chart.js',
       'client/bower_components/papaparse/papaparse.min.js',
 
-      'client/bower_components/angular/angular.js',
+      'client/bower_components/angular/angular.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
-      'client/bower_components/angular-ui-router/release/angular-ui-router.js',
-      'client/bower_components/angular-resource/angular-resource.js',
-      'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      'client/bower_components/angular-resource/angular-resource.min.js',
+      'client/bower_components/angular-animate/angular-animate.min.js',
       'client/bower_components/angular-chart.js/dist/angular-chart.js',
       'client/bower_components/angular-ui-grid/ui-grid.min.js',
       'client/bower_components/angular-toastr/dist/angular-toastr.tpls.min.js',
