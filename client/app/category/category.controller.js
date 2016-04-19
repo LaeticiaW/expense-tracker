@@ -15,15 +15,10 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
 
             $scope.sort = {
                 property: 'name',
-                subProperty: undefined,
-                direction: 'ascending',
-                type: 'string',
-                getPropertyName: function() {
-                    return this.property + (this.subProperty ? '.' + this.subProperty : '');
-                }
+                direction: 'ascending'
             };
 
-            $scope.categories = orderByFilter($scope.categories, $scope.sort.getPropertyName(), false);
+            $scope.categories = orderByFilter($scope.categories, $scope.sort.property, false);
         }
 
         $scope.addCategory = function() {
@@ -153,12 +148,12 @@ angular.module('category').controller('CategoryController', ['$scope', '$http', 
                 }
             }
 
-            $scope.categories = orderByFilter($scope.categories, $scope.sort.getPropertyName(), reverse);
+            $scope.categories = orderByFilter($scope.categories, $scope.sort.property, reverse);
         };
 
         $scope.sortSubcategories = function(category) {
 
-            category.subcategories = orderByFilter(category.subcategories, $scope.sort.getPropertyName(), false);
+            category.subcategories = orderByFilter(category.subcategories, $scope.sort.property, false);
         };
 
         function resetCategories() {

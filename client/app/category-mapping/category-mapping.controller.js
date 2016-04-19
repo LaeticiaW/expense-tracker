@@ -1,8 +1,8 @@
 
 angular.module('categoryMapping').controller('CategoryMappingController', ['$scope', '$http', 'CategoryMapping',
-    'categoryMappingFilter', 'CommonService', 'toastr', 'categories',
+    'categoryMappingFilter', 'CommonService', 'orderByFilter', 'toastr', 'categories',
 
-    function($scope, $http, CategoryMapping, categoryMappingFilter, CommonService, toastr, categories) {
+    function($scope, $http, CategoryMapping, categoryMappingFilter, CommonService, orderByFilter, toastr, categories) {
 
         initialize();
 
@@ -21,7 +21,9 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
                     property: 'category',
                     subProperty: 'name',
                     direction: 'ascending',
-                    type: 'string'
+                    getPropertyName: function() {
+                        return this.property + (this.subProperty ? '.' + this.subProperty : '');
+                    }
                 };
 
                 $scope.mappingFilterCategory = 'all';
@@ -30,7 +32,7 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
 
                 $scope.filteredMappings = categoryMappingFilter($scope.mappings, $scope.mappingFilterCategory);
 
-                CommonService.sortObjectArray($scope.filteredMappings, $scope.sort);
+                $scope.filteredMappings = orderByFilter($scope.filteredMappings, $scope.sort.getPropertyName(), false);
             },
             function(errorResponse) {
                 console.log("categorymapping query error", errorResponse);
@@ -122,6 +124,9 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
             $scope.editing = false;
 
             $scope.filterMappings();
+
+            $scope.filteredMappings = orderByFilter($scope.filteredMappings, $scope.sort.getPropertyName(),
+                $scope.sort.direction === 'descending');
         };
 
         $scope.cancelMapping = function(mapping) {
@@ -157,9 +162,12 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
 
         $scope.sortMappings = function(sortProperty, subProperty) {
 
+            var reverse = false;
+
             if ($scope.sort.property === sortProperty) {
                 if ($scope.sort.direction === 'ascending') {
                     $scope.sort.direction = 'descending';
+                    reverse = true;
                 } else {
                     $scope.sort.direction = 'ascending';
                 }
@@ -170,7 +178,7 @@ angular.module('categoryMapping').controller('CategoryMappingController', ['$sco
             $scope.sort.property = sortProperty;
             $scope.sort.subProperty = subProperty;
 
-            CommonService.sortObjectArray($scope.filteredMappings, $scope.sort);
+            $scope.filteredMappings = orderByFilter($scope.filteredMappings, $scope.sort.getPropertyName(), reverse);
         };
 
         $scope.categorySelected = function(cat) {
