@@ -4,8 +4,7 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'client/bower_components/jquery/dist/jquery.min.js',
-      'client/bower_components/bootstrap/dist/js/bootstrap.min.js',
+
       'client/bower_components/Chart.js/Chart.js',
       'client/bower_components/papaparse/papaparse.min.js',
 
@@ -53,8 +52,14 @@ module.exports = function(config){
       'client/app/app.routes.js',
       'client/app/app.config.js',
 
-      'test/unit/**/*.js'
+      'test/unit/**/*.js',
+
+      'client/app/**/*.html'
     ],
+
+    preprocessors: {
+      'client/app/**/*.html': ['ng-html2js']
+    },
 
     autoWatch : true,
 
@@ -69,7 +74,8 @@ module.exports = function(config){
         'karma-firefox-launcher',
         'karma-jasmine',
         'karma-spec-reporter',
-        'karma-phantomjs-launcher'
+        'karma-phantomjs-launcher',
+        'karma-ng-html2js-preprocessor'
     ],
 
     phantomjsLauncher: {
@@ -91,6 +97,11 @@ module.exports = function(config){
         suppressPassed: false,       // do not print information about passed tests
         suppressSkipped: true,       // do not print information about skipped tests
         showSpecTiming: false        // print the time elapsed for each spec
+    },
+
+    ngHtml2JsPreprocessor: {
+        stripPrefix: 'client/',
+        moduleName: 'templates'
     }
 
   });
