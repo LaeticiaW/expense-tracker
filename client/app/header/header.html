@@ -16,24 +16,24 @@
             </div>
         </div>
 
-        <div class="collapse navbar-collapse navbar-controls" id="header-navbar-collapse">
+        <div class="collapse navbar-collapse navbar-controls" id="header-navbar-collapse" role="navigation">
 
             <h1 class="header-title header-title-expanded-nav hidden-xs">Expense Tracker</h1>
 
             <ul class="nav navbar-nav menu expense-tracker-menu">
                 <li class="first-nav-item"><a ng-href="/">Home</a></li>
                 <li><a ui-sref=".categories" class="nav-item">Categories</a></li>
-                <li class="dropdown expenses-menu">
-                    <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Expenses<span class="caret"></span></a>
-                    <ul class="dropdown-menu submenu">
+                <li class="expenses-menu" uib-dropdown>
+                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Expenses<span class="caret"></span></a>
+                    <ul class="dropdown-menu submenu" uib-dropdown-menu>
                         <li><a ui-sref=".expenses">Manage Expenses</a></li>
                         <li><a ui-sref=".imports">Import Expenses</a></li>
                         <li><a ui-sref=".category-mappings">Category Mapping</a></li>
                     </ul>
                 </li>
-                <li class="dropdown reports-menu">
-                    <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Reports<span class="caret"></span></a>
-                    <ul class="dropdown-menu submenu">
+                <li class="reports-menu" uib-dropdown>
+                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Reports<span class="caret"></span></a>
+                    <ul class="dropdown-menu submenu" uib-dropdown-menu>
                         <li><a ui-sref=".monthly-report">Monthly Expenses</a></li>
                         <li><a ui-sref=".yearly-report">Yearly Expenses</a></li>
                         <li><a ui-sref=".summary-report">Expense Summary</a></li>

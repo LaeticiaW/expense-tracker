@@ -68,15 +68,15 @@ angular.module('expense-tracker').config(function($httpProvider) {
     });
 });
 
-angular.module('expense-tracker').run(function() {
+angular.module('expense-tracker').run(['$document', function($document) {
 
     // Fix bug in Bootstrap so that mobile navbar collapses after clicking link
-    $(document).on('click','.navbar-collapse.in', function(e) {
-        if ($(e.target).is('a')) {
-            $(this).collapse('hide');
-        }
-    });
-});
+    // $(document).on('click','.navbar-collapse.in', function(e) {
+    //     if ($(e.target).is('a')) {
+    //         $(this).collapse('hide');
+    //     }
+    // });
+}]);
 
 angular.module('expense-tracker').run(function(confirmationPopoverDefaults) {
 

@@ -56,6 +56,15 @@ angular.module('common').factory('CommonService', [function () {
             if (category.length) {
                 item.category = category[0];
             }
+        },
+
+        find: function(element, selector) {
+
+            if (element === document) {
+                return angular.element(document.querySelectorAll(selector))
+            } else {
+                return angular.element(element[0].querySelectorAll(selector))
+            }
         }
     };
 }]);

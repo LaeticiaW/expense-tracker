@@ -6,13 +6,14 @@
  * and it also displays 'Prev Months' and 'Next Months' buttons which the user can use to show the next
  * or previous 3 months.
  *
- * Usage: <month-scroller report-class="tableClassName" init-event="ngRepeatDoneEvent"></month-scroller>
- *      tableClassName    - class on table element that contains the 12 month columns
- *      ngRepeatDoneEvent - event triggered when the table row ng-repeat is complete
- *                          (see the ngRepeat extension directive which will trigger this event)
+ * Usage: Add the month-scroller tag just before the report/table with the month columns,
+ *        and add the hidden-cell class to each month column (for each quarter Q1 through Q4) via
+ *        ng-class="{'hidden-cell' : hideQuarter.Q1}"
+
+ *   <month-scroller report-class="tableClassName" init-event="ngRepeatDoneEvent"></month-scroller>
+ *      init-event   - event triggered when the table row ng-repeat is complete
+ *                     (see the ngRepeat extension directive which will trigger this event)
  *
- *  Note that the report table th and td cells for the months need to have Q1, Q2, Q3, and Q4 classes on them
- *  representing which quarter the month belongs to.
  */
 angular.module('report').directive('monthScroller', function() {
 
@@ -21,78 +22,87 @@ angular.module('report').directive('monthScroller', function() {
         templateUrl: 'app/report/monthly/month-scroller.html',
         link: function(scope, element, attrs) {
 
-            var $prevButton = $(element.find('.prev-button')[0]),
-                $nextButton = $(element.find('.next-button')[0]),
-                $monthlyReport = $('.' + attrs.reportClass),
-                mql;
+            var mql = window.matchMedia("(max-width: 1200px)");
 
-            mql = window.matchMedia("(max-width: 1200px)");
-            mql.addListener(hideMonthCells);
+            mql.addListener(hideMonths);
 
             if (attrs.initEvent) {
                 scope.$on(attrs.initEvent, function () {
-                    hideMonthCells(mql);
+                    hideMonths(mql);
                 });
             } else {
-                 hideMonthCells(mql);
+                 hideMonths(mql);
             }
 
-            function hideMonthCells(mql) {
+            scope.disablePrevButton = true;
+            scope.disableNextButton = false;
+
+            scope.quarter = 1;
+
+            scope.hideQuarter = {
+                Q1: false,
+                Q2: true,
+                Q3: true,
+                Q4: true
+            };
+
+            scope.showPrevMonths = function() {
+
+                if (scope.quarter > 1) {
+                    scope.quarter--;
+                } else {
+                    return;
+                }
+
+                hideMonths(mql);
+            };
+
+            scope.showNextMonths = function() {
+
+                if (scope.quarter < 4) {
+                    scope.quarter++;
+                } else {
+                    return;
+                }
+
+                hideMonths(mql);
+            };
+
+            function hideMonths(mql) {
 
                 if (mql.matches) {
-                    $monthlyReport.find('.Q2, .Q3, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q1').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', true);
+                    scope.hideQuarter = {
+                        Q1: scope.quarter === 1 ? false : true,
+                        Q2: scope.quarter === 2 ? false : true,
+                        Q3: scope.quarter === 3 ? false : true,
+                        Q4: scope.quarter === 4 ? false : true
+                    };
                 } else {
-                    $monthlyReport.find('.Q1, .Q2, .Q3, .Q4').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
+                    scope.hideQuarter = {
+                        Q1: false,
+                        Q2: false,
+                        Q3: false,
+                        Q4: false
+                    };
                 }
+
+                disableMonthButtons();
             }
 
-            $prevButton.click(function() {
+            function disableMonthButtons() {
 
-                if (!$monthlyReport.find('th.Q4.hidden-cell').length) {
-                    $monthlyReport.find('.Q1, .Q2, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q3').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
-                    $nextButton.prop('disabled', false);
-                } else if (!$monthlyReport.find('th.Q3.hidden-cell').length) {
-                    $monthlyReport.find('.Q1, .Q3, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q2').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
-                    $nextButton.prop('disabled', false);
-                } else if (!$monthlyReport.find('th.Q2.hidden-cell').length) {
-                    $monthlyReport.find('.Q2, .Q3, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q1').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', true);
-                    $nextButton.prop('disabled', false);
+                if (scope.quarter === 4) {
+                    scope.disableNextButton = true;
+                } else {
+                    scope.disableNextButton = false;
                 }
 
-                $nextButton.prop('disabled', false);
-
-            });
-
-            $nextButton.click(function() {
-
-                if (!$monthlyReport.find('th.Q1.hidden-cell').length) {
-                    $monthlyReport.find('.Q1, .Q3, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q2').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
-                    $nextButton.prop('disabled', false);
-                } else if (!$monthlyReport.find('th.Q2.hidden-cell').length) {
-                    $monthlyReport.find('.Q1, .Q2, .Q4').addClass('hidden-cell');
-                    $monthlyReport.find('.Q3').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
-                    $nextButton.prop('disabled', false);
-                } else if (!$monthlyReport.find('th.Q3.hidden-cell').length) {
-                    $monthlyReport.find('.Q1, .Q2, .Q3').addClass('hidden-cell');
-                    $monthlyReport.find('.Q4').removeClass('hidden-cell');
-                    $prevButton.prop('disabled', false);
-                    $nextButton.prop('disabled', true);
+                if (scope.quarter === 1) {
+                    scope.disablePrevButton = true;
+                } else {
+                    scope.disablePrevButton = false;
                 }
-
-                $prevButton.prop('disabled', false);
-            });
+            }
         }
     };
 });

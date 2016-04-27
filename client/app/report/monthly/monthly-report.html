@@ -17,7 +17,7 @@
     </div>
 
     <div class="row wide-row table-controls">
-        <month-scroller report-class="monthly-report" init-event="monthly-report:repeat-done"></month-scroller>
+        <month-scroller init-event="monthly-report:repeat-done"></month-scroller>
     </div>
 
     <div class="row wide-row table-responsive">
@@ -28,18 +28,18 @@
                 <tr>
                     <th scope="col" class="category"><span>Category</span></th>
                     <th scope="col" class="subcategory"><span>Subcategory</span></th>
-                    <th scope="col" class="Q1">Jan</th>
-                    <th scope="col" class="Q1">Feb</th>
-                    <th scope="col" class="Q1">Mar</th>
-                    <th scope="col" class="Q2">Apr</th>
-                    <th scope="col" class="Q2">May</th>
-                    <th scope="col" class="Q2">Jun</th>
-                    <th scope="col" class="Q3">Jul</th>
-                    <th scope="col" class="Q3">Aug</th>
-                    <th scope="col" class="Q3">Sep</th>
-                    <th scope="col" class="Q4">Oct</th>
-                    <th scope="col" class="Q4">Nov</th>
-                    <th scope="col" class="Q4">Dec</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q1}">Jan</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q1}">Feb</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q1}">Mar</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q2}">Apr</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q2}">May</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q2}">Jun</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q3}">Jul</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q3}">Aug</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q3}">Sep</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q4}">Oct</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q4}">Nov</th>
+                    <th scope="col" ng-class="{'hidden-cell' : hideQuarter.Q4}">Dec</th>
                     <th scope="col">{{reportFilterYear}}</th>
                 </tr>
             </thead>
@@ -48,34 +48,34 @@
                     <th scope="row" colspan="2" class="text" ng-if="data.isCategoryRow">{{data._id.category.name}}</td>
                     <td class="text empty-category-cell" ng-if="!data.isCategoryRow"><span class="sr-only">All Subcategories</span></td>
                     <td scope="row" class="text subcategory-cell" ng-if="!data.isCategoryRow">{{data._id.subcategory}}</td>
-                    <td class="Q1">{{data.monthMap[0] | number:0}}</td>
-                    <td class="Q1">{{data.monthMap[1] | number:0}}</td>
-                    <td class="Q1">{{data.monthMap[2] | number:0}}</td>
-                    <td class="Q2">{{data.monthMap[3] | number:0}}</td>
-                    <td class="Q2">{{data.monthMap[4] | number:0}}</td>
-                    <td class="Q2">{{data.monthMap[5] | number:0}}</td>
-                    <td class="Q3">{{data.monthMap[6] | number:0}}</td>
-                    <td class="Q3">{{data.monthMap[7] | number:0}}</td>
-                    <td class="Q3">{{data.monthMap[8] | number:0}}</td>
-                    <td class="Q4">{{data.monthMap[9] | number:0}}</td>
-                    <td class="Q4">{{data.monthMap[10] | number:0}}</td>
-                    <td class="Q4">{{data.monthMap[11] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{data.monthMap[0] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{data.monthMap[1] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{data.monthMap[2] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{data.monthMap[3] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{data.monthMap[4] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{data.monthMap[5] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{data.monthMap[6] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{data.monthMap[7] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{data.monthMap[8] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{data.monthMap[9] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{data.monthMap[10] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{data.monthMap[11] | number:0}}</td>
                     <td class="year-total">{{data.yearTotal | number:0}}</td>
                 </tr>
                 <tr class="report-row report-totals">
                     <td colspan="2" class="total-text">Monthly Totals <span class="sr-only"> for all categories</span></td>
-                    <td class="Q1">{{reportMonthlyTotals[0] | number:0}}</td>
-                    <td class="Q1">{{reportMonthlyTotals[1] | number:0}}</td>
-                    <td class="Q1">{{reportMonthlyTotals[2] | number:0}}</td>
-                    <td class="Q2">{{reportMonthlyTotals[3] | number:0}}</td>
-                    <td class="Q2">{{reportMonthlyTotals[4] | number:0}}</td>
-                    <td class="Q2">{{reportMonthlyTotals[5] | number:0}}</td>
-                    <td class="Q3">{{reportMonthlyTotals[6] | number:0}}</td>
-                    <td class="Q3">{{reportMonthlyTotals[7] | number:0}}</td>
-                    <td class="Q3">{{reportMonthlyTotals[8] | number:0}}</td>
-                    <td class="Q4">{{reportMonthlyTotals[9] | number:0}}</td>
-                    <td class="Q4">{{reportMonthlyTotals[10] | number:0}}</td>
-                    <td class="Q4">{{reportMonthlyTotals[11] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{reportMonthlyTotals[0] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{reportMonthlyTotals[1] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q1}">{{reportMonthlyTotals[2] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{reportMonthlyTotals[3] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{reportMonthlyTotals[4] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q2}">{{reportMonthlyTotals[5] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{reportMonthlyTotals[6] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{reportMonthlyTotals[7] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q3}">{{reportMonthlyTotals[8] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{reportMonthlyTotals[9] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{reportMonthlyTotals[10] | number:0}}</td>
+                    <td ng-class="{'hidden-cell' : hideQuarter.Q4}">{{reportMonthlyTotals[11] | number:0}}</td>
                     <td>{{reportYearlyTotal | number:0}}</td>
                 </tr>
             </tbody>

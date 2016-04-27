@@ -1,1 +1,1 @@
-angular.module('report', ['ui.bootstrap']);
+angular.module('report', ['ui.bootstrap', 'common']);
