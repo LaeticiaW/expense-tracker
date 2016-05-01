@@ -1,3 +1,6 @@
+/*
+ * Toastr config
+ */
 angular.module('expense-tracker').config(function(toastrConfig) {
 
     angular.extend(toastrConfig, {
@@ -35,6 +38,9 @@ angular.module('expense-tracker').config(function(toastrConfig) {
     });
 });
 
+/*
+ * Decorate $exceptionHandler
+ */
 angular.module('expense-tracker').config(function($provide) {
 
     $provide.decorator('$exceptionHandler', function($delegate, $injector) {
@@ -42,7 +48,6 @@ angular.module('expense-tracker').config(function($provide) {
             console.log("Exception Handler:", exception, cause);
             $delegate(exception, cause);
             var msg = "An unexpected error occurred";
-            console.log("typeof exception=", typeof exception);
             if (typeof exception === 'string') {
                 msg = exception;
             } else if (typeof exception === 'object') {
@@ -55,6 +60,9 @@ angular.module('expense-tracker').config(function($provide) {
     });
 });
 
+/*
+ * Config $http interceptors
+ */
 angular.module('expense-tracker').config(function($httpProvider) {
 
      $httpProvider.interceptors.push(function($q, $injector) {
@@ -68,16 +76,54 @@ angular.module('expense-tracker').config(function($httpProvider) {
     });
 });
 
-angular.module('expense-tracker').run(['$document', function($document) {
+/*
+ * I18n
+ */
 
-    // Fix bug in Bootstrap so that mobile navbar collapses after clicking link
-    // $(document).on('click','.navbar-collapse.in', function(e) {
-    //     if ($(e.target).is('a')) {
-    //         $(this).collapse('hide');
-    //     }
-    // });
-}]);
+angular.module('expense-tracker').constant('LOCALES', {
+    'locales': {
+        'en_US': 'English',
+        'es': 'Spanish'
+    },
+    'preferredLocale': 'es'
+});
 
+angular.module('expense-tracker').config(function ($translateProvider) {
+    $translateProvider.useMissingTranslationHandlerLog();
+});
+
+angular.module('expense-tracker').config(function ($translateProvider) {
+
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'app/resources/locale-',           // path to translations files
+        suffix: '.json'                            // suffix
+    });
+    //$translateProvider.preferredLanguage('en_US'); // is applied on first load
+    $translateProvider.determinePreferredLanguage(); // Automatically get language from browser
+    //$translateProvider.useLocalStorage();          // saves selected language to localStorage
+    $translateProvider.useSanitizeValueStrategy('escape');
+});
+
+angular.module('expense-tracker').config(function (tmhDynamicLocaleProvider) {
+    tmhDynamicLocaleProvider.localeLocationPattern('client/bower_components/angular-i18n/angular-locale_{{locale}}.js');
+});
+
+/*
+ * Fix bootstrap bug??
+ */
+// angular.module('expense-tracker').run(['$document', function($document) {
+
+//     // Fix bug in Bootstrap so that mobile navbar collapses after clicking link
+//     $(document).on('click','.navbar-collapse.in', function(e) {
+//         if ($(e.target).is('a')) {
+//             $(this).collapse('hide');
+//         }
+//     });
+// }]);
+
+/*
+ * Config confirmation popover defaults
+ */
 angular.module('expense-tracker').run(function(confirmationPopoverDefaults) {
 
   confirmationPopoverDefaults.confirmText = 'OK';

@@ -1,0 +1,14 @@
+{
+    "header.ExpenseTracker": "Gastos Rastreador",
+    "header.Home": "Casa",
+    "header.Categories": "Categorías",
+    "header.Expenses": "Gastos",
+    "header.Reports": "Informes",
+    "header.ManageExpenses": "Gestionar los Gastos",
+    "header.ImportExpenses": "Los Gastos de Importación",
+    "header.CategoryMapping": "Mapeo de la categoría",
+    "header.MonthlyExpenses": "Gastos Mensuales",
+    "header.YearlyExpenses": "Los Gastos Anuales",
+    "header.ExpenseSummary": "Resumen de Gastos",
+    "home.SpendingByCategory": "El Gasto por Categoría"
+}

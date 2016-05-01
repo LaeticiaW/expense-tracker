@@ -27,7 +27,7 @@ describe('Directive Test: Month Scroller', function() {
 
         var th;
 
-        angular.forEach(thElem, function(value, key){
+        angular.forEach(thElem, function(value, key) {
              th = angular.element(value);
              if (key === 0 || key === 1 || key === 14) {
                 // not month column

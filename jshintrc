@@ -38,7 +38,7 @@
     "latedef": "nofunc",
     "newcap": true,
     "noarg": true,
-    "noempty": true,
+    "noempty": false,
     "nonew": true,
     "undef": true,
     "unused": true,

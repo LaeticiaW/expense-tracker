@@ -1,0 +1,14 @@
+{
+    "header.ExpenseTracker": "Expense Tracker",
+    "header.Home": "Home",
+    "header.Categories": "Categories",
+    "header.Expenses": "Expenses",
+    "header.Reports": "Reports",
+    "header.ManageExpenses": "Manage Expenses",
+    "header.ImportExpenses": "Import Expenses",
+    "header.CategoryMapping": "Category Mapping",
+    "header.MonthlyExpenses": "Monthly Expenses",
+    "header.YearlyExpenses": "Yearly Expenses",
+    "header.ExpenseSummary": "Expense Summary",
+    "home.SpendingByCategory": "Spending By Category"
+}

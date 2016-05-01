@@ -1,23 +1,23 @@
 <div class="container content-container home-container">
-        
-    <div class="row page-header">         
-        <h2 class="page-title">Spending by Category</h3>  
-        <div class="page-links">             
+
+    <div class="row page-header">
+        <h2 class="page-title" translate>{{"home.SpendingByCategory"}}</h3>
+        <div class="page-links">
             <span class="form-group filter">
-                Year:                         
+                Year:
                 <input type="number" class="form-control" ng-model="reportFilterYear"/>
-                <button type="button" class="btn btn-sm btn-primary" ng-click="filterChanged()">Go</button> 
-            </span>                                              
-        </div>        
+                <button type="button" class="btn btn-sm btn-primary" ng-click="filterChanged()">Go</button>
+            </span>
+        </div>
     </div>
 
     <div ng-if="categoriesExist">
         <canvas id="pie" class="chart chart-pie"
             chart-data="percentages" chart-labels="categories" chart-legend="true" chart-options="chartOptions">
-        </canvas> 
+        </canvas>
     </div>
     <div ng-if="!categoriesExist">
         <span class="no-chart">No expenses exist for {{reportFilterYear}}</span>
     </div>
-        
+
 </div>

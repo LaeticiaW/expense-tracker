@@ -58,7 +58,8 @@ module.exports = function(config){
     ],
 
     preprocessors: {
-      'client/app/**/*.html': ['ng-html2js']
+      'client/app/**/*.html': ['ng-html2js'],
+      'client/app/**/*.js': ['coverage']
     },
 
     autoWatch : true,
@@ -75,7 +76,8 @@ module.exports = function(config){
         'karma-jasmine',
         'karma-spec-reporter',
         'karma-phantomjs-launcher',
-        'karma-ng-html2js-preprocessor'
+        'karma-ng-html2js-preprocessor',
+        'karma-coverage'  
     ],
 
     phantomjsLauncher: {
@@ -83,7 +85,7 @@ module.exports = function(config){
     },
 
     //reporters: ['progress']
-    reporters: ["spec"],
+    reporters: ['spec', 'coverage'],
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',

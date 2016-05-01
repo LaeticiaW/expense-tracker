@@ -12,31 +12,36 @@
             </button>
 
             <div class="collapsed-navbar-title visible-xs">
-                <h1 class="header-title header-title-collapsed-nav">Expense Tracker</h1>
+                <h1 class="header-title header-title-collapsed-nav" translate>{{"header.ExpenseTracker"}}</h1>
             </div>
         </div>
 
         <div class="collapse navbar-collapse navbar-controls" id="header-navbar-collapse" role="navigation">
 
-            <h1 class="header-title header-title-expanded-nav hidden-xs">Expense Tracker</h1>
+            <h1 class="header-title header-title-expanded-nav hidden-xs" translate>{{"header.ExpenseTracker"}}</h1>
 
             <ul class="nav navbar-nav menu expense-tracker-menu">
-                <li class="first-nav-item"><a ng-href="/">Home</a></li>
-                <li><a ui-sref=".categories" class="nav-item">Categories</a></li>
+                <li class="first-nav-item"><a ng-href="/" translate>{{"header.Home"}}</a></li>
+                <li><a ui-sref=".categories" class="nav-item" translate>{{"header.Categories"}}</a></li>
+
                 <li class="expenses-menu" uib-dropdown>
-                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Expenses<span class="caret"></span></a>
+                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">
+                        <span translate>{{"header.Expenses"}}</span><span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu submenu" uib-dropdown-menu>
-                        <li><a ui-sref=".expenses">Manage Expenses</a></li>
-                        <li><a ui-sref=".imports">Import Expenses</a></li>
-                        <li><a ui-sref=".category-mappings">Category Mapping</a></li>
+                        <li><a ui-sref=".expenses" translate>{{"header.ManageExpenses"}}</a></li>
+                        <li><a ui-sref=".imports" translate>{{"header.ImportExpenses"}}</a></li>
+                        <li><a ui-sref=".category-mappings" translate>{{"header.CategoryMapping"}}</a></li>
                     </ul>
                 </li>
                 <li class="reports-menu" uib-dropdown>
-                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">Reports<span class="caret"></span></a>
+                    <a tabindex="0" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" keyboard-nav="true">
+                        <span translate>{{"header.Reports"}}</span><span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu submenu" uib-dropdown-menu>
-                        <li><a ui-sref=".monthly-report">Monthly Expenses</a></li>
-                        <li><a ui-sref=".yearly-report">Yearly Expenses</a></li>
-                        <li><a ui-sref=".summary-report">Expense Summary</a></li>
+                        <li><a ui-sref=".monthly-report" translate>{{"header.MonthlyExpenses"}}</a></li>
+                        <li><a ui-sref=".yearly-report" translate>{{"header.YearlyExpenses"}}</a></li>
+                        <li><a ui-sref=".summary-report" translate>{{"header.ExpenseSummary"}}</a></li>
                     </ul>
                 </li>
             </ul>

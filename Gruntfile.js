@@ -5,6 +5,7 @@ module.exports = function (grunt) {
         meta: {
             jsFiles: ['client/app/**/*.js', 'test/unit/**/*.js', 'server/**/*.js']
         },
+
         watch: {
             styles: {
                 files: ["client/app/less/*"],
