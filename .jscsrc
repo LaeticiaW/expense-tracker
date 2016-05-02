@@ -1,0 +1,9 @@
+{
+    requireSpaceAfterKeywords: [ "if", "else", "for", "while", "do", "switch", "return", "try" ],
+    requireSpacesInFunctionExpression: {beforeOpeningCurlyBrace: true},
+    requireSpacesInAnonymousFunctionExpression: {beforeOpeningCurlyBrace: true},
+    disallowSpacesInsideParentheses: true,
+    requireSpaceBeforeBinaryOperators: ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
+    requireSpaceAfterBinaryOperators: ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
+    requireSpaceBeforeBlockStatements: true
+}
