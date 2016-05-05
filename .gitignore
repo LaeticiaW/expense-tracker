@@ -1,0 +1,9 @@
+/node_modules
+/dist
+/.tmp
+/client/bower_components
+/todo
+/.DS_Store
+/.gitattributes
+/coverage
+/build
