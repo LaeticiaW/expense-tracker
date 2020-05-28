@@ -1,20 +1,16 @@
-{  "trxDate" : ISODate("2016-03-05T05:00:00Z"), "trxYear" : 2016, "amount" : 164.98, "subcategory" : "Time Warner Cable", "categoryId" : "570cd040b2e0a562cd119b59" }
-{  "trxDate" : ISODate("2016-03-01T05:00:00Z"), "trxYear" : 2016, "amount" : 12.92, "subcategory" : "Cell Phone", "categoryId" : "570cd040b2e0a562cd119b59" }
-
-{  "trxDate" : ISODate("2016-03-06T05:00:00Z"), "trxYear" : 2016, "amount" : 14.96, "subcategory" : "Food Lion", "categoryId" : "570cd040b2e0a562cd119b53" }
-{  "trxDate" : ISODate("2016-02-29T05:00:00Z"), "trxYear" : 2016, "amount" : 22.39, "subcategory" : "Food Lion", "categoryId" : "570cd040b2e0a562cd119b53" }
-{  "trxDate" : ISODate("2016-03-04T05:00:00Z"), "trxYear" : 2016, "amount" : 40.12, "subcategory" : "Harris Teeter", "categoryId" : "570cd040b2e0a562cd119b53" }
-{  "trxDate" : ISODate("2016-03-04T05:00:00Z"), "trxYear" : 2016, "amount" : 35.67, "subcategory" : "Harris Teeter", "categoryId" : "570cd040b2e0a562cd119b53" }
-
-{  "trxDate" : ISODate("2016-03-05T05:00:00Z"), "trxYear" : 2016, "amount" : 156.15, "subcategory" : "Hotels", "categoryId" : "570cd040b2e0a562cd119b55" }
-{  "trxDate" : ISODate("2016-03-04T05:00:00Z"), "trxYear" : 2016, "amount" : 49.88, "subcategory" : "Hotels", "categoryId" : "570cd040b2e0a562cd119b55" }
-
-{  "trxDate" : ISODate("2016-03-04T05:00:00Z"), "trxYear" : 2016, "amount" : 22.33, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54" }
-{  "trxDate" : ISODate("2016-03-03T05:00:00Z"), "trxYear" : 2016, "amount" : 21.76, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54" }
-{  "trxDate" : ISODate("2016-02-29T05:00:00Z"), "trxYear" : 2016, "amount" : 21.64, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54" }
-
-{  "trxDate" : ISODate("2016-03-06T05:00:00Z"), "trxYear" : 2016, "amount" : 13.26, "subcategory" : "Drinks/Snacks", "categoryId" : "570cd040b2e0a562cd119b58" }
-{  "trxDate" : ISODate("2016-03-04T05:00:00Z"), "trxYear" : 2016, "amount" : 13.25, "subcategory" : "Fast Food", "categoryId" : "570cd040b2e0a562cd119b58" }
-{  "trxDate" : ISODate("2016-02-29T05:00:00Z"), "trxYear" : 2016, "amount" : 5.87, "subcategory" : "Drinks/Snacks", "categoryId" : "570cd040b2e0a562cd119b58" }
-{  "trxDate" : ISODate("2016-02-28T05:00:00Z"), "trxYear" : 2016, "amount" : 4.72, "subcategory" : "Breakfast", "categoryId" : "570cd040b2e0a562cd119b58" }
+{"trxDate":{"$date": "2020-02-05T05:00:00Z"}, "trxYear":2020, "amount" : 164.98, "subcategory" : "Time Warner Cable", "categoryId" : "570cd040b2e0a562cd119b59"}
+{"trxDate":{"$date": "2020-02-01T05:00:00Z"}, "trxYear":2020, "amount" : 12.92, "subcategory" : "Cell Phone", "categoryId" : "570cd040b2e0a562cd119b59"}
+{"trxDate":{"$date": "2020-02-06T05:00:00Z"}, "trxYear":2020, "amount" : 14.96, "subcategory" : "Food Lion", "categoryId" : "570cd040b2e0a562cd119b53"}
+{"trxDate":{"$date": "2020-02-29T05:00:00Z"}, "trxYear":2020, "amount" : 22.39, "subcategory" : "Food Lion", "categoryId" : "570cd040b2e0a562cd119b53"}
+{"trxDate":{"$date": "2020-02-04T05:00:00Z"}, "trxYear":2020, "amount" : 40.12, "subcategory" : "Harris Teeter", "categoryId" : "570cd040b2e0a562cd119b53"}
+{"trxDate":{"$date": "2020-02-04T05:00:00Z"}, "trxYear":2020, "amount" : 35.67, "subcategory" : "Harris Teeter", "categoryId" : "570cd040b2e0a562cd119b53"}
+{"trxDate":{"$date": "2020-02-05T05:00:00Z"}, "trxYear":2020, "amount" : 156.15, "subcategory" : "Hotels", "categoryId" : "570cd040b2e0a562cd119b55"}
+{"trxDate":{"$date": "2020-02-04T05:00:00Z"}, "trxYear":2020, "amount" : 49.88, "subcategory" : "Hotels", "categoryId" : "570cd040b2e0a562cd119b55"}
+{"trxDate":{"$date": "2020-02-04T05:00:00Z"}, "trxYear":2020, "amount" : 22.33, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54"}
+{"trxDate":{"$date": "2020-02-03T05:00:00Z"}, "trxYear":2020, "amount" : 21.76, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54"}
+{"trxDate":{"$date": "2020-02-29T05:00:00Z"}, "trxYear":2020, "amount" : 21.64, "subcategory" : "Gas", "categoryId" : "570cd040b2e0a562cd119b54"}
+{"trxDate":{"$date": "2020-02-06T05:00:00Z"}, "trxYear":2020, "amount" : 13.26, "subcategory" : "Drinks/Snacks", "categoryId" : "570cd040b2e0a562cd119b58"}
+{"trxDate":{"$date": "2020-02-04T05:00:00Z"}, "trxYear":2020, "amount" : 13.25, "subcategory" : "Fast Food", "categoryId" : "570cd040b2e0a562cd119b58"}
+{"trxDate":{"$date": "2020-02-29T05:00:00Z"}, "trxYear":2020, "amount" : 5.87, "subcategory" : "Drinks/Snacks", "categoryId" : "570cd040b2e0a562cd119b58"}
+{"trxDate":{"$date": "2020-02-28T05:00:00Z"}, "trxYear":2020, "amount" : 4.72, "subcategory" : "Breakfast", "categoryId" : "570cd040b2e0a562cd119b58"}
 

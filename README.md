@@ -22,14 +22,14 @@ This web application was written in Javascript using the MEAN tech stack: Angula
 
 >Make sure that node and npm have been installed and that MongoDB is running locally on port 27017.  The mongo shell command should be in the user path.
 
-Download and unzip the expense-tracker zip file
+Clone the expense-tracker code
 ```shell
-https://github.com/LaeticiaW/expense-tracker/archive/master.zip
+git clone https://github.com/LaeticiaW/expense-tracker.git
 ```
 
 Go to the project directory
 ```shell
-cd expense-tracker-master
+cd expense-tracker
 ```
 
 Install the npm packages
@@ -37,36 +37,24 @@ Install the npm packages
 npm install
 ```
 
-Go to the expense-tracker-master/db directory
+Build the client app
 ```shell
-cd db
+npm build
 ```
 
-Create the expenseTracker DB and Collections
-```shell
-mongo createDB.js
+Create the expenseTracker DB
+```
+npm createDb
 ```
 
-Import sample data into the expenseTracker DB
+Import sample data into the DB
 ```shell
-./importCategories.sh
-./importCategoryMappings.sh
-./importExpenses.sh
+npm importSampleData
 ```
 
-Go back to the expense-tracker-master project directory
+Start the server and display the app in the browser (http://localhost:3000)
 ```shell
-cd ..
-```
-
-Start the node server
-```shell
-./start_server.sh
-```
-
-Open a browser and start the web app
-```shell
-http://127.0.0.1:3000/
+npm run start
 ```
 
 Note:  To test out the Import Expenses menu item, there is a sampleImportData.csv file in the expense-tracker-master/db directory.
